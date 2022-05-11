@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/login/register.dart';
 import 'package:qidgym_management_system/ui/screens/login/login.dart';
 
 class HomePage extends StatelessWidget {
@@ -59,7 +60,12 @@ class HomePage extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               )),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignupPage()));
+                          },
                           child: Text(
                             'SIGN UP',
                             style: TextStyle(
