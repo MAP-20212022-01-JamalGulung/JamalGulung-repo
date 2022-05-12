@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "125904741624",
+    "project_id": "qidgym",
+    "storage_bucket": "qidgym.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125904741624:android:36dedc92f561c98054470d",
+        "android_client_info": {
+          "package_name": "com.example.qidgym_management_system"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125904741624-1fa3tgtg1vlsadvic169ds8lq6hiuj8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGBhCCvg7PqnzMmoctosL8jSLd06zrdbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125904741624-1fa3tgtg1vlsadvic169ds8lq6hiuj8d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -31,6 +31,10 @@ dependencies:
     sdk: flutter
     
   animated_splash_screen: ^1.1.0
+  cloud_firestore: ^3.1.14
+  firebase_auth: ^3.3.17
+  firebase_analytics: ^9.1.7
+  firebase_core: ^1.16.0
 
 
   # The following adds the Cupertino Icons font to your application.
