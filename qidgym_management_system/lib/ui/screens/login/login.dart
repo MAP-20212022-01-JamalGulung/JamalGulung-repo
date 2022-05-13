@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:qidgym_management_system/ui/maininterfaces.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -161,7 +162,12 @@ class LoginState extends State<Login> {
                             ),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50))),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainInterfaces()));
+                        },
                         child: Text(
                           'LOGIN',
                           style: TextStyle(
