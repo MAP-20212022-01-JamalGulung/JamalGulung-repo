@@ -30,6 +30,7 @@ class UserAuth {
           .doc(_user.user!.uid)
           .set({
             'name': userData.name,
+            'email': userData.email,
             'phone': userData.phoneNumber,
             'nric': userData.nric,
             'address': userData.address,
