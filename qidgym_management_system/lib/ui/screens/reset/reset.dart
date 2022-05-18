@@ -1,13 +1,12 @@
 import "package:flutter/material.dart";
 import 'package:qidgym_management_system/ui/maininterfaces.dart';
-import 'package:qidgym_management_system/ui/screens/reset/reset.dart';
 
-class Login extends StatefulWidget {
+class Reset extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => LoginState();
+  State<StatefulWidget> createState() => ResetState();
 }
 
-class LoginState extends State<Login> {
+class ResetState extends State<Reset> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +16,7 @@ class LoginState extends State<Login> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          "Login",
+          "Reset Password",
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 32),
         ),
         shape: Border(
@@ -54,7 +53,8 @@ class LoginState extends State<Login> {
                           height: 20,
                         ),
                         const Text(
-                          "Email ",
+                          "Please enter your email for password reset",
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
@@ -89,68 +89,6 @@ class LoginState extends State<Login> {
                                 TextStyle(color: Colors.grey, fontSize: 13),
                           ),
                         ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                        Text(
-                          "Password",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16),
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                        TextField(
-                          style: TextStyle(color: Colors.white),
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: true,
-                          enableSuggestions: false,
-                          autocorrect: false,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Color.fromRGBO(40, 40, 41, 1),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    width: 2,
-                                    color: Color.fromRGBO(238, 29, 82, 1)),
-                                borderRadius: BorderRadius.circular(10)),
-                            prefixIcon: Padding(
-                              padding: EdgeInsets.all(0.0),
-                              child: Icon(
-                                Icons.lock_outline,
-                                size: 20.0,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            hintText: "Enter your password",
-                            hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 13),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Reset()));
-                              },
-                              child: Text(
-                                "Forgot Password?",
-                                style: TextStyle(
-                                    color: Color.fromRGBO(238, 29, 82, 1),
-                                    fontSize: 13),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   ),
@@ -175,7 +113,7 @@ class LoginState extends State<Login> {
                                   builder: (context) => MainInterfaces()));
                         },
                         child: Text(
-                          'LOGIN',
+                          'SEND',
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 18,
