@@ -9,13 +9,15 @@ class PersonData {
   String phoneNumber = '';
   String email = '';
   String password = '';
+  String address = '';
+  String nric = '';
 }
 
 class UserAuth {
   String statusMsg = "Account Created Successfully";
 
   // To create new User
-  Future<UserCredential?> createUser (PersonData userData) async {
+  Future<UserCredential?> createUser(PersonData userData) async {
     try {
       var _user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: userData.email,
@@ -27,6 +29,10 @@ class UserAuth {
           .doc(_user.user!.uid)
           .set({
             'name': userData.name,
+            'phone': userData.phoneNumber,
+            'nric': userData.nric,
+            'address': userData.address,
+            // 'name': userData.name,
           })
           .then((value) => debugPrint('User Created : ${_user.user!.email}'))
           .catchError((e) => debugPrint('Database Error!'));
@@ -37,7 +43,6 @@ class UserAuth {
       debugPrint('${e.toString()} Error Occured!');
     }
     return null;
-    
   }
 
   //To verify new User
