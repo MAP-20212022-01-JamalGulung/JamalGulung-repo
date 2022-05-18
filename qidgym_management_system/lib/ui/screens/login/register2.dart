@@ -156,7 +156,7 @@ class SignupPageState2 extends State<SignupPage2> {
                                   ),
                                   validator: _validateAddress,
                                   onSaved: (String? vale) {
-                                    person.name = vale!; //vm
+                                    person.address = vale!; //vm
                                   },
                                   enabled: !_isLoading,
                                 ),

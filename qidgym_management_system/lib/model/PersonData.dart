@@ -11,6 +11,7 @@ class PersonData {
   String password = '';
   String address = '';
   String nric = '';
+  // String dpUrl = '';
 }
 
 class UserAuth {
@@ -32,6 +33,7 @@ class UserAuth {
             'phone': userData.phoneNumber,
             'nric': userData.nric,
             'address': userData.address,
+            'dpUrl': "https://firebasestorage.googleapis.com/v0/b/qidgym.appspot.com/o/avatar.png?alt=media&token=f0306a5d-b937-4eb9-8077-1fa6b07dc3de",
             // 'name': userData.name,
           })
           .then((value) => debugPrint('User Created : ${_user.user!.email}'))
