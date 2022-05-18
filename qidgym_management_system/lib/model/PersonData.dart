@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
 
@@ -73,4 +74,33 @@ class UserAuth {
     );
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+   Future<User?> signInUsingEmailPassword({
+    required String email,
+    required String password,
+  }) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+       user = userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      Fluttertoast.showToast(
+        msg: "Invalid Email and Password",
+        toastLength: Toast.LENGTH_LONG,
+      );
+     
+      // debugPrint('${e.toString()}');
+    }
+    
+  
+
+    return user;
+  }
+
 }
+

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
@@ -9,7 +10,7 @@ import 'package:qidgym_management_system/ui/screens/profile/profile.dart';
 PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
 class MainInterfaces extends StatelessWidget {
-  const MainInterfaces({Key? key}) : super(key: key);
+  const MainInterfaces({Key? key,required User? user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

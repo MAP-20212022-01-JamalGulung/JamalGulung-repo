@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import "package:flutter/material.dart";
 import 'package:qidgym_management_system/ui/maininterfaces.dart';
 import 'package:qidgym_management_system/ui/screens/reset/reset.dart';
+import '../../../model/PersonData.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -8,6 +11,30 @@ class Login extends StatefulWidget {
 }
 
 class LoginState extends State<Login> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailTextController = TextEditingController();
+  final _passwordTextController = TextEditingController();
+
+  bool _isProcessing = false;
+
+  Future<FirebaseApp> _initializeFirebase() async {
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => MainInterfaces(
+            user: user,
+          ),
+        ),
+      );
+    }
+
+    return firebaseApp;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,8 +90,18 @@ class LoginState extends State<Login> {
                         SizedBox(
                           height: 12,
                         ),
-                        TextField(
+                        TextFormField(
+                          validator: (emailValue) {
+                            if (emailValue == null) {
+                              return null;
+                            }
+                            if (emailValue.isEmpty) {
+                              return 'Email can\'t be empty';
+                            }
+                            return null;
+                          },
                           style: TextStyle(color: Colors.white),
+                          controller: _emailTextController,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             filled: true,
@@ -102,7 +139,17 @@ class LoginState extends State<Login> {
                         SizedBox(
                           height: 12,
                         ),
-                        TextField(
+                        TextFormField(
+                          validator: (passwordValue) {
+                            if (passwordValue == null) {
+                              return null;
+                            }
+                            if (passwordValue.isEmpty) {
+                              return 'Email can\'t be empty';
+                            }
+                            return null;
+                          },
+                          controller: _passwordTextController,
                           style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: true,
@@ -168,12 +215,28 @@ class LoginState extends State<Login> {
                             ),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50))),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
+                        onPressed:
+                          (_emailTextController.text==""||_passwordTextController.text=="")?null:(
+                             () async {User? user =
+                              await UserAuth().signInUsingEmailPassword(
+                            email: _emailTextController.text,
+                            password: _passwordTextController.text,
+                          );
+
+                          if(user!=null){
+
+                            Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => MainInterfaces()));
-                        },
+                                builder: (context) =>
+                                    MainInterfaces(user: user),
+                              ),
+                            );
+                          }
+                            
+                          }
+                          ),
+                          
+                        
                         child: Text(
                           'LOGIN',
                           style: TextStyle(

@@ -1,11 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:qidgym_management_system/ui/screens/profile/edit_dp.dart';
+import 'package:qidgym_management_system/ui/welcome.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
+  @override
+  State<StatefulWidget> createState() => ProfileState();
+}
 
+class ProfileState extends State<Profile> {
+  bool _isSigningOut = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +43,27 @@ class Profile extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(0),
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      setState(() {
+                        _isSigningOut = true;
+                      });
+                      await FirebaseAuth.instance.signOut();
+                      setState(() {
+                        _isSigningOut = false;
+                      });
+                      Navigator.of(context, rootNavigator: true)
+                          .pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return HomePage();
+                          },
+                        ),
+                        (_) => false,
+                      );
+
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (context) => Login()));
+                    },
                     child: Align(
                       alignment: Alignment.topRight,
                       child: const FaIcon(
