@@ -1,21 +1,29 @@
 // import 'package: url_launcher/url_launcher.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:qidgym_management_system/ui/screens/login/register2.dart';
+import 'package:qidgym_management_system/ui/screens/login/thanku_page.dart';
 import 'PasswordField.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../model/PersonData.dart';
 import 'login.dart';
+import 'register_view.dart';
 
-class SignupPage extends StatefulWidget {
+class SignupPage2 extends StatefulWidget {
+  final String email;
+  final String password;
+  SignupPage2({Key? key, required this.email, required this.password})
+      : super(key: key);
+
   @override
-  State createState() {
-    return SignupPageState();
-  }
+  SignupPageState2 createState() =>
+      SignupPageState2(email: this.email, password: this.password);
 }
 
-class SignupPageState extends State<SignupPage> {
-  final _emailTextController = TextEditingController();
-  final _passwordTextController = TextEditingController();
+class SignupPageState2 extends State<SignupPage2> {
+  String email;
+  String password;
 
+  SignupPageState2({required this.email, required this.password});
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormFieldState<String>> _passwordFieldKey =
@@ -23,24 +31,42 @@ class SignupPageState extends State<SignupPage> {
   PersonData person = PersonData();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   bool _isLoading = false;
-  bool _obscureText = true;
 
-  String? _validatePassword(String? value) {
-    final FormFieldState<String>? passwordField =
-        _passwordFieldKey.currentState;
-    if (passwordField!.value == null || passwordField.value!.isEmpty)
-      return 'Please enter a password.';
-    if (passwordField.value != value) return 'The passwords don\'t match';
+  String? _validateName(String? value) {
+    if (value!.isEmpty) return 'Name is required.';
+    final RegExp nameExp = RegExp(r'^[A-Za-z ]+$');
+    if (!nameExp.hasMatch(value)) {
+      return 'Please enter only alphabetical characters.';
+    }
     return null;
   }
 
-  String? _validateEmail(String? value) {
-    if (value!.isEmpty) return 'Email is required.';
+  String? _validatePhone(String? value) {
+    if (value!.isEmpty) return 'Phone is required.';
+    final RegExp _regExp = RegExp(r'^[0-9]+$');
+    if (!_regExp.hasMatch(value)) {
+      return 'Please enter only numerical characters.';
+    }
+    return null;
+  }
+
+  String? _validateNRIC(String? value) {
+    if (value!.isEmpty) return 'NRIC is required.';
+    final RegExp _regExp = RegExp(r'^[0-9]+$');
+    if (!_regExp.hasMatch(value)) {
+      return 'Please enter only numerical characters.';
+    }
+    return null;
+  }
+
+  String? _validateAddress(String? value) {
+    if (value!.isEmpty) return 'Address is required.';
     return null;
   }
 
   @override
   Widget build(BuildContext context) {
+    print(email + " " + password);
     // ignore: unnecessary_new
     return new Scaffold(
       key: _scaffoldKey,
@@ -80,7 +106,7 @@ class SignupPageState extends State<SignupPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               const Text(
-                                "Sign up",
+                                "You are almost there",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 30,
@@ -91,7 +117,7 @@ class SignupPageState extends State<SignupPage> {
                                 height: 20,
                               ),
                               Text(
-                                "Create an Account,Its free",
+                                "Finish creating your account...",
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.grey[700],
@@ -109,9 +135,9 @@ class SignupPageState extends State<SignupPage> {
                                 TextFormField(
                                   style: const TextStyle(color: Colors.white),
                                   decoration: InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    hintText: 'Enter your email address',
-                                    labelText: 'Email',
+                                    border: const OutlineInputBorder(),
+                                    hintText: 'Enter your name',
+                                    labelText: 'Name',
                                     labelStyle: const TextStyle(
                                         color:
                                             Color.fromARGB(255, 255, 255, 255)),
@@ -127,81 +153,128 @@ class SignupPageState extends State<SignupPage> {
                                     prefixIcon: Padding(
                                       padding: EdgeInsets.all(0.0),
                                       child: Icon(
-                                        Icons.mail_outline,
+                                        Icons.person,
                                         size: 20.0,
                                         color: Colors.grey,
                                       ),
                                     ),
                                   ),
-                                  validator: _validateEmail,
-                                  controller: _emailTextController,
+                                  validator: _validateName,
                                   onSaved: (String? vale) {
-                                    person.email = vale!;
-                                    // email = person.email;
+                                    person.name = vale!; //vm
                                   },
-                                  keyboardType: TextInputType.emailAddress,
                                   enabled: !_isLoading,
                                 ),
                                 const SizedBox(
                                   height: 20.0,
                                 ),
-                                PasswordField(
-                                  fieldKey: _passwordFieldKey,
-                                  helperText: 'No more than 8 characters.',
-                                  labelText: 'Password *',
-                                  onSaved: (String? value) {
-                                    setState(() {
-                                      person.password = value!;
-                                      // password = person.password;
-                                    });
-                                  },
-                                ),
-                                const SizedBox(height: 20.0),
                                 TextFormField(
                                   style: const TextStyle(color: Colors.white),
                                   decoration: InputDecoration(
                                     border: const OutlineInputBorder(),
+                                    hintText: 'Enter your address',
+                                    labelText: 'Address',
+                                    labelStyle: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255)),
                                     filled: true,
-                                    fillColor:
-                                        const Color.fromRGBO(40, 40, 41, 1),
+                                    fillColor: Color.fromRGBO(40, 40, 41, 1),
                                     focusedBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                             width: 2,
                                             color:
                                                 Color.fromRGBO(238, 29, 82, 1)),
                                         borderRadius:
                                             BorderRadius.circular(10)),
-                                    prefixIcon: const Padding(
+                                    prefixIcon: Padding(
                                       padding: EdgeInsets.all(0.0),
                                       child: Icon(
-                                        Icons.lock_outline,
+                                        Icons.location_pin,
                                         size: 20.0,
                                         color: Colors.grey,
                                       ),
                                     ),
-                                    labelText: 'Re-type password',
-                                    labelStyle: const TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255)),
-                                    suffixIcon: GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          _obscureText = !_obscureText;
-                                        });
-                                      },
-                                      child: Icon(_obscureText
-                                          ? Icons.visibility
-                                          : Icons.visibility_off),
-                                    ),
                                   ),
-                                  maxLength: 8,
-                                  obscureText: true,
-                                  validator: _validatePassword,
-                                  controller: _passwordTextController,
+                                  validator: _validateAddress,
+                                  onSaved: (String? vale) {
+                                    person.address = vale!; //vm
+                                  },
                                   enabled: !_isLoading,
                                 ),
                                 const SizedBox(
-                                  height: 60.0,
+                                  height: 20.0,
+                                ),
+                                TextFormField(
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
+                                    border: const OutlineInputBorder(),
+                                    hintText: 'Enter your phone number',
+                                    labelText: 'Phone Number',
+                                    labelStyle: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255)),
+                                    filled: true,
+                                    fillColor: Color.fromRGBO(40, 40, 41, 1),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 2,
+                                            color:
+                                                Color.fromRGBO(238, 29, 82, 1)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    prefixIcon: Padding(
+                                      padding: EdgeInsets.all(0.0),
+                                      child: Icon(
+                                        Icons.local_phone_outlined,
+                                        size: 20.0,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                  validator: _validatePhone,
+                                  onSaved: (String? vale) {
+                                    person.phoneNumber = vale!; //vm
+                                  },
+                                  enabled: !_isLoading,
+                                ),
+                                const SizedBox(
+                                  height: 20.0,
+                                ),
+                                TextFormField(
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
+                                    border: const OutlineInputBorder(),
+                                    hintText: 'Enter your NRIC number',
+                                    labelText: 'NRIC Number',
+                                    labelStyle: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255)),
+                                    filled: true,
+                                    fillColor: Color.fromRGBO(40, 40, 41, 1),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 2,
+                                            color:
+                                                Color.fromRGBO(238, 29, 82, 1)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    prefixIcon: Padding(
+                                      padding: EdgeInsets.all(0.0),
+                                      child: Icon(
+                                        Icons.contact_page_outlined,
+                                        size: 20.0,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                  validator: _validateNRIC,
+                                  onSaved: (String? vale) {
+                                    person.nric = vale!; //vm
+                                  },
+                                  enabled: !_isLoading,
+                                ),
+                                const SizedBox(
+                                  height: 20.0,
                                 ),
                               ],
                             ),
@@ -238,23 +311,6 @@ class SignupPageState extends State<SignupPage> {
                           const SizedBox(
                             height: 20,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text("Already have an account? ",
-                                  style: TextStyle(color: Colors.white)),
-                              InkWell(
-                                child: const Text('Login Now',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white)),
-                                onTap: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login())),
-                              ),
-                            ],
-                          )
                         ],
                       ),
                     ],
@@ -264,26 +320,40 @@ class SignupPageState extends State<SignupPage> {
     );
   }
 
-  String? validateName(String? value) {
-    if (value!.length < 3)
-      return 'Name must be more than 2 charater';
-    else
-      return null;
-  }
-
   void _handleSubmitted() {
     final FormState? form = _formKey.currentState;
     if (!form!.validate()) {
       _autovalidateMode =
           AutovalidateMode.always; // Start validating on every change.
-      showInSnackBar('Please fix the errors in red before submitting.');
+      showInSnackBar('Please fix the errors in red before proceeding.');
     } else {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => SignupPage2(
-                  email: _emailTextController.text,
-                  password: _passwordTextController.text)));
+      form.save();
+      setState(() {
+        _isLoading = true;
+      });
+      UserAuth auth = UserAuth();
+      person.email = email;
+      person.password = password;
+      print(person.email);
+      print("password " + person.password);
+      auth.createUser(person).then((UserCredential? user) {
+        showInSnackBar('Signup successfull.');
+        setState(() {
+          _isLoading = false;
+        });
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    const ThankYouPage(title: 'Thank you Page')));
+      }).catchError((e) {
+        showInSnackBar('Sorry. Registration failed.');
+        setState(() {
+          _isLoading = false;
+        });
+        print(e);
+        showInSnackBar(e);
+      });
     }
   }
 

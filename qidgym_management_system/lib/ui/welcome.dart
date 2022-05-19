@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/login/register.dart';
+import 'screens/login/register_view.dart';
 import 'package:qidgym_management_system/ui/screens/login/login.dart';
 
 class HomePage extends StatelessWidget {
