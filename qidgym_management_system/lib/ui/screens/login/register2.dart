@@ -1,6 +1,7 @@
 // import 'package: url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:qidgym_management_system/ui/screens/login/thanku_page.dart';
 import 'PasswordField.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../model/PersonData.dart';
@@ -261,7 +262,7 @@ class SignupPageState2 extends State<SignupPage2> {
           _isLoading = false;
         });
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Login()));
+            context, MaterialPageRoute(builder: (context) => const ThankYouPage(title: 'Thank you Page')));
       }).catchError((e) {
         showInSnackBar('Error lah pulak.');
         setState(() {

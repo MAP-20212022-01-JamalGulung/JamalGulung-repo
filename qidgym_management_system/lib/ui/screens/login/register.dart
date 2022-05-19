@@ -26,8 +26,6 @@ class SignupPageState extends State<SignupPage> {
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   bool _isLoading = false;
 
-  
-
   String? _validatePassword(String? value) {
     final FormFieldState<String>? passwordField =
         _passwordFieldKey.currentState;
@@ -109,7 +107,6 @@ class SignupPageState extends State<SignupPage> {
                             padding: const EdgeInsets.symmetric(horizontal: 40),
                             child: Column(
                               children: <Widget>[
-                                
                                 TextFormField(
                                   decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -234,8 +231,9 @@ class SignupPageState extends State<SignupPage> {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) =>
-                  SignupPage2(email: _emailTextController.text, password: _passwordTextController.text)));
+              builder: (context) => SignupPage2(
+                  email: _emailTextController.text,
+                  password: _passwordTextController.text)));
     }
   }
 
