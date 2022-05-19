@@ -43,7 +43,7 @@ class UserAuth {
           .catchError((e) => debugPrint('Database Error!'));
       return _user;
     } on FirebaseAuthException catch (e) {
-      debugPrint('${e.toString()}');
+      throw signUpErrorCodes[e.code] ?? 'Database Error Occured!';
     } catch (e) {
       debugPrint('${e.toString()} Error Occured!');
     }
@@ -100,4 +100,10 @@ class UserAuth {
 
     return user;
   }
+
+  static const signUpErrorCodes = <String, String>{
+  'weak-password': 'The password is too weak',
+  'email-already-in-use': 'An account already exists for this email',
+};
+
 }

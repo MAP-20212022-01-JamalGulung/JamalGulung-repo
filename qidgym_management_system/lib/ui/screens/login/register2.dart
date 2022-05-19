@@ -325,7 +325,7 @@ class SignupPageState2 extends State<SignupPage2> {
     if (!form!.validate()) {
       _autovalidateMode =
           AutovalidateMode.always; // Start validating on every change.
-      showInSnackBar('Please fix the errors in red before submitting.');
+      showInSnackBar('Please fix the errors in red before proceeding.');
     } else {
       form.save();
       setState(() {
@@ -347,7 +347,7 @@ class SignupPageState2 extends State<SignupPage2> {
                 builder: (context) =>
                     const ThankYouPage(title: 'Thank you Page')));
       }).catchError((e) {
-        showInSnackBar('Error lah pulak.');
+        showInSnackBar('Sorry. Registration failed.');
         setState(() {
           _isLoading = false;
         });
