@@ -20,7 +20,7 @@ class PasswordField extends StatefulWidget {
   final ValueChanged<String>? onFieldSubmitted;
 
   @override
-  _PasswordFieldState createState() => new _PasswordFieldState();
+  _PasswordFieldState createState() => _PasswordFieldState();
 }
 
 class _PasswordFieldState extends State<PasswordField> {
@@ -28,27 +28,41 @@ class _PasswordFieldState extends State<PasswordField> {
 
   @override
   Widget build(BuildContext context) {
-    return new TextFormField(
+    return TextFormField(
       key: widget.fieldKey,
       obscureText: _obscureText,
       maxLength: 8,
       onSaved: widget.onSaved,
       validator: widget.validator,
       onFieldSubmitted: widget.onFieldSubmitted,
-      decoration: new InputDecoration(
+      style: const TextStyle(color: Colors.white),
+      decoration: InputDecoration(
         border: const OutlineInputBorder(),
         filled: true,
+        fillColor: const Color.fromRGBO(40, 40, 41, 1),
+        focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+                width: 2, color: Color.fromRGBO(238, 29, 82, 1)),
+            borderRadius: BorderRadius.circular(10)),
+        prefixIcon: const Padding(
+          padding: EdgeInsets.all(0.0),
+          child: Icon(
+            Icons.lock_outline,
+            size: 20.0,
+            color: Colors.grey,
+          ),
+        ),
         hintText: widget.hintText,
         labelText: widget.labelText,
+        labelStyle: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
         helperText: widget.helperText,
-        suffixIcon: new GestureDetector(
+        suffixIcon: GestureDetector(
           onTap: () {
             setState(() {
               _obscureText = !_obscureText;
             });
           },
-          child:
-              new Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+          child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
         ),
       ),
     );

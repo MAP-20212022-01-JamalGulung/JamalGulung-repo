@@ -1,9 +1,7 @@
 // import 'package: url_launcher/url_launcher.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:qidgym_management_system/ui/screens/login/register2.dart';
 import 'PasswordField.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../model/PersonData.dart';
 import 'login.dart';
 
@@ -25,6 +23,7 @@ class SignupPageState extends State<SignupPage> {
   PersonData person = PersonData();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   bool _isLoading = false;
+  bool _obscureText = true;
 
   String? _validatePassword(String? value) {
     final FormFieldState<String>? passwordField =
@@ -108,11 +107,31 @@ class SignupPageState extends State<SignupPage> {
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
                                     border: OutlineInputBorder(),
                                     hintText: 'Enter your email address',
                                     labelText: 'Email',
+                                    labelStyle: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255)),
                                     filled: true,
+                                    fillColor: Color.fromRGBO(40, 40, 41, 1),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 2,
+                                            color:
+                                                Color.fromRGBO(238, 29, 82, 1)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    prefixIcon: Padding(
+                                      padding: EdgeInsets.all(0.0),
+                                      child: Icon(
+                                        Icons.mail_outline,
+                                        size: 20.0,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
                                   ),
                                   validator: _validateEmail,
                                   controller: _emailTextController,
@@ -139,10 +158,41 @@ class SignupPageState extends State<SignupPage> {
                                 ),
                                 const SizedBox(height: 20.0),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
                                     border: const OutlineInputBorder(),
                                     filled: true,
+                                    fillColor:
+                                        const Color.fromRGBO(40, 40, 41, 1),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            width: 2,
+                                            color:
+                                                Color.fromRGBO(238, 29, 82, 1)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    prefixIcon: const Padding(
+                                      padding: EdgeInsets.all(0.0),
+                                      child: Icon(
+                                        Icons.lock_outline,
+                                        size: 20.0,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
                                     labelText: 'Re-type password',
+                                    labelStyle: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255)),
+                                    suffixIcon: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          _obscureText = !_obscureText;
+                                        });
+                                      },
+                                      child: Icon(_obscureText
+                                          ? Icons.visibility
+                                          : Icons.visibility_off),
+                                    ),
                                   ),
                                   maxLength: 8,
                                   obscureText: true,

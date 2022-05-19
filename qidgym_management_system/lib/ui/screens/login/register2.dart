@@ -133,11 +133,31 @@ class SignupPageState2 extends State<SignupPage2> {
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
                                     border: const OutlineInputBorder(),
                                     hintText: 'Enter your name',
                                     labelText: 'Name',
+                                    labelStyle: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255)),
                                     filled: true,
+                                    fillColor: Color.fromRGBO(40, 40, 41, 1),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 2,
+                                            color:
+                                                Color.fromRGBO(238, 29, 82, 1)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    prefixIcon: Padding(
+                                      padding: EdgeInsets.all(0.0),
+                                      child: Icon(
+                                        Icons.person,
+                                        size: 20.0,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
                                   ),
                                   validator: _validateName,
                                   onSaved: (String? vale) {
@@ -149,11 +169,31 @@ class SignupPageState2 extends State<SignupPage2> {
                                   height: 20.0,
                                 ),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
                                     border: const OutlineInputBorder(),
                                     hintText: 'Enter your address',
                                     labelText: 'Address',
+                                    labelStyle: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255)),
                                     filled: true,
+                                    fillColor: Color.fromRGBO(40, 40, 41, 1),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 2,
+                                            color:
+                                                Color.fromRGBO(238, 29, 82, 1)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    prefixIcon: Padding(
+                                      padding: EdgeInsets.all(0.0),
+                                      child: Icon(
+                                        Icons.location_pin,
+                                        size: 20.0,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
                                   ),
                                   validator: _validateAddress,
                                   onSaved: (String? vale) {
@@ -165,11 +205,31 @@ class SignupPageState2 extends State<SignupPage2> {
                                   height: 20.0,
                                 ),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
                                     border: const OutlineInputBorder(),
                                     hintText: 'Enter your phone number',
                                     labelText: 'Phone Number',
+                                    labelStyle: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255)),
                                     filled: true,
+                                    fillColor: Color.fromRGBO(40, 40, 41, 1),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 2,
+                                            color:
+                                                Color.fromRGBO(238, 29, 82, 1)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    prefixIcon: Padding(
+                                      padding: EdgeInsets.all(0.0),
+                                      child: Icon(
+                                        Icons.local_phone_outlined,
+                                        size: 20.0,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
                                   ),
                                   validator: _validatePhone,
                                   onSaved: (String? vale) {
@@ -181,11 +241,31 @@ class SignupPageState2 extends State<SignupPage2> {
                                   height: 20.0,
                                 ),
                                 TextFormField(
-                                  decoration: const InputDecoration(
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
                                     border: const OutlineInputBorder(),
                                     hintText: 'Enter your NRIC number',
                                     labelText: 'NRIC Number',
+                                    labelStyle: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255)),
                                     filled: true,
+                                    fillColor: Color.fromRGBO(40, 40, 41, 1),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            width: 2,
+                                            color:
+                                                Color.fromRGBO(238, 29, 82, 1)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    prefixIcon: Padding(
+                                      padding: EdgeInsets.all(0.0),
+                                      child: Icon(
+                                        Icons.contact_page_outlined,
+                                        size: 20.0,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
                                   ),
                                   validator: _validateNRIC,
                                   onSaved: (String? vale) {
@@ -262,7 +342,10 @@ class SignupPageState2 extends State<SignupPage2> {
           _isLoading = false;
         });
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const ThankYouPage(title: 'Thank you Page')));
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    const ThankYouPage(title: 'Thank you Page')));
       }).catchError((e) {
         showInSnackBar('Error lah pulak.');
         setState(() {
