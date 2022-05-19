@@ -91,7 +91,7 @@ class UserAuth {
       user = userCredential.user;
     } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(
-        msg: "Invalid Email and Password",
+        msg: "Invalid Email or Password",
         toastLength: Toast.LENGTH_LONG,
       );
 

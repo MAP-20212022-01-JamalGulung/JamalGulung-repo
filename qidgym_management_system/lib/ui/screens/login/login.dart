@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import "package:flutter/material.dart";
 import 'package:qidgym_management_system/ui/maininterfaces.dart';
 import 'package:qidgym_management_system/ui/screens/reset/reset.dart';
@@ -11,29 +11,29 @@ class Login extends StatefulWidget {
 }
 
 class LoginState extends State<Login> {
-  final _formKey = GlobalKey<FormState>();
+  // final _formKey = GlobalKey<FormState>();
   final _emailTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
 
-  bool _isProcessing = false;
+  // bool _isProcessing = false;
 
-  Future<FirebaseApp> _initializeFirebase() async {
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
+  // Future<FirebaseApp> _initializeFirebase() async {
+  //   FirebaseApp firebaseApp = await Firebase.initializeApp();
 
-    User? user = FirebaseAuth.instance.currentUser;
+  //   User? user = FirebaseAuth.instance.currentUser;
 
-    if (user != null) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => MainInterfaces(
-            user: user,
-          ),
-        ),
-      );
-    }
+  //   if (user != null) {
+  //     Navigator.of(context).pushReplacement(
+  //       MaterialPageRoute(
+  //         builder: (context) => MainInterfaces(
+  //           user: user,
+  //         ),
+  //       ),
+  //     );
+  //   }
 
-    return firebaseApp;
-  }
+  //   return firebaseApp;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +145,7 @@ class LoginState extends State<Login> {
                               return null;
                             }
                             if (passwordValue.isEmpty) {
-                              return 'Email can\'t be empty';
+                              return 'Password can\'t be empty';
                             }
                             return null;
                           },
