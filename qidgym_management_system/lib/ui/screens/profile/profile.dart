@@ -256,13 +256,14 @@ class ProfileState extends State<Profile> {
                                                   onTap: () {
                                                     Navigator.of(ctx).pop();
                                                     // deletePost(ID, context);
+                                                    print(_name.text);
                                                     viewmodel.updateData(
-                                                        _name.text,
-                                                        _email.text,
-                                                        _nric.text,
-                                                        _phone.text,
-                                                        _address.text,
-                                                        _dpUrl.text);
+                                                        name: _name.text,
+                                                        email: _email.text,
+                                                        nric: _nric.text,
+                                                        phone: _phone.text,
+                                                        address: _address.text,
+                                                        dpUrl: _dpUrl.text);
                                                   },
                                                   title: Center(
                                                     child: Text("Done"),
@@ -408,12 +409,12 @@ class ProfileState extends State<Profile> {
                                                     Navigator.of(ctx).pop();
                                                     // deletePost(ID, context);
                                                     viewmodel.updateData(
-                                                        _name.text,
-                                                        _email.text,
-                                                        _nric.text,
-                                                        _phone.text,
-                                                        _address.text,
-                                                        _dpUrl.text);
+                                                        name: _name.text,
+                                                        email: _email.text,
+                                                        nric: _nric.text,
+                                                        phone: _phone.text,
+                                                        address: _address.text,
+                                                        dpUrl: _dpUrl.text);
                                                   },
                                                   title: Center(
                                                     child: Text("Done"),
@@ -493,12 +494,12 @@ class ProfileState extends State<Profile> {
                                                     Navigator.of(ctx).pop();
                                                     // deletePost(ID, context);
                                                     viewmodel.updateData(
-                                                        _name.text,
-                                                        _email.text,
-                                                        _nric.text,
-                                                        _phone.text,
-                                                        _address.text,
-                                                        _dpUrl.text);
+                                                        name: _name.text,
+                                                        email: _email.text,
+                                                        nric: _nric.text,
+                                                        phone: _phone.text,
+                                                        address: _address.text,
+                                                        dpUrl: _dpUrl.text);
                                                   },
                                                   title: Center(
                                                     child: Text("Done"),
