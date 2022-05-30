@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qidgym_management_system/ui/screens/membership/member_list_view.dart';
 import 'membership.dart';
 
 class MembershipScreen extends StatelessWidget {
@@ -12,7 +13,7 @@ class MembershipScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Color.fromRGBO(24, 24, 24, 1),
         appBar: MembershipAppBar(),
-        body: MembershipTabBar(title: '',), 
+        body: MemberListView(),
       ),
     );
   }

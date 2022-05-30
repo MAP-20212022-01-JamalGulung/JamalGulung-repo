@@ -35,6 +35,7 @@ class UserAuth {
             'phone': userData.phoneNumber,
             'nric': userData.nric,
             'address': userData.address,
+            'userType': 'member',
             'dpUrl':
                 "https://firebasestorage.googleapis.com/v0/b/qidgym.appspot.com/o/avatar.png?alt=media&token=f0306a5d-b937-4eb9-8077-1fa6b07dc3de",
             // 'name': userData.name,
@@ -102,8 +103,7 @@ class UserAuth {
   }
 
   static const signUpErrorCodes = <String, String>{
-  'weak-password': 'The password is too weak',
-  'email-already-in-use': 'An account already exists for this email',
-};
-
+    'weak-password': 'The password is too weak',
+    'email-already-in-use': 'An account already exists for this email',
+  };
 }
