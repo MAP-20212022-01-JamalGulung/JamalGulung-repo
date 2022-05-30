@@ -42,6 +42,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   url_launcher: ^6.1.1
+<<<<<<< Updated upstream
+=======
+  google_sign_in: ^5.3.1
+  provider: ^6.0.2
+  flutter_toggle_tab: ^1.2.0
+  google_fonts: ^3.0.1
+>>>>>>> Stashed changes
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +78,8 @@ flutter:
   - assets/loading.png
   - assets/QydLogo2.png
   - assets/QydLogoGrey.png
+  - assets/QydLogoGrey2.png
+  - assets/barcode.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
