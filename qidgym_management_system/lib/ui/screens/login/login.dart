@@ -39,15 +39,15 @@ class LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color.fromRGBO(24, 24, 24, 1),
+      backgroundColor: const Color.fromRGBO(24, 24, 24, 1),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(
+        title: const Text(
           "Login",
-          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 32),
+          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 32),
         ),
-        shape: Border(
+        shape: const Border(
             bottom: BorderSide(
           color: Colors.grey,
           width: 1,
@@ -58,7 +58,7 @@ class LoginState extends State<Login> {
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         child: Padding(
-            padding: EdgeInsets.only(top: 20, left: 40, right: 40),
+            padding: const EdgeInsets.only(top: 20, left: 40, right: 40),
             child: SizedBox(
               width: double.infinity,
               height: MediaQuery.of(context).size.height,
@@ -77,7 +77,7 @@ class LoginState extends State<Login> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         const Text(
@@ -87,7 +87,7 @@ class LoginState extends State<Login> {
                               fontWeight: FontWeight.w700,
                               fontSize: 16),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         TextFormField(
@@ -100,22 +100,22 @@ class LoginState extends State<Login> {
                             }
                             return null;
                           },
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                           controller: _emailTextController,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: Color.fromRGBO(40, 40, 41, 1),
+                            fillColor: const Color.fromRGBO(40, 40, 41, 1),
 
                             // contentPadding: EdgeInsets.all(0.0),
                             focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 2,
-                                    color: Color.fromRGBO(238, 29, 82, 1)),
+                                    color: const Color.fromRGBO(238, 29, 82, 1)),
                                 borderRadius: BorderRadius.circular(10)),
-                            prefixIcon: Padding(
-                              padding: EdgeInsets.all(0.0),
-                              child: Icon(
+                            prefixIcon: const Padding(
+                              padding: const EdgeInsets.all(0.0),
+                              child: const Icon(
                                 Icons.email_outlined,
                                 size: 20.0,
                                 color: Colors.grey,
@@ -123,20 +123,20 @@ class LoginState extends State<Login> {
                             ),
                             hintText: "Enter your email",
                             hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 13),
+                                const TextStyle(color: Colors.grey, fontSize: 13),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
-                        Text(
+                        const Text(
                           "Password",
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
                               fontSize: 16),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         TextFormField(
@@ -150,20 +150,20 @@ class LoginState extends State<Login> {
                             return null;
                           },
                           controller: _passwordTextController,
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: Color.fromRGBO(40, 40, 41, 1),
+                            fillColor: const Color.fromRGBO(40, 40, 41, 1),
                             focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                     width: 2,
                                     color: Color.fromRGBO(238, 29, 82, 1)),
                                 borderRadius: BorderRadius.circular(10)),
-                            prefixIcon: Padding(
+                            prefixIcon: const Padding(
                               padding: EdgeInsets.all(0.0),
                               child: Icon(
                                 Icons.lock_outline,
@@ -173,10 +173,10 @@ class LoginState extends State<Login> {
                             ),
                             hintText: "Enter your password",
                             hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 13),
+                                const TextStyle(color: Colors.grey, fontSize: 13),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Row(
@@ -189,9 +189,9 @@ class LoginState extends State<Login> {
                                     MaterialPageRoute(
                                         builder: (context) => Reset()));
                               },
-                              child: Text(
+                              child: const Text(
                                 "Forgot Password?",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Color.fromRGBO(238, 29, 82, 1),
                                     fontSize: 13),
                               ),
@@ -201,7 +201,7 @@ class LoginState extends State<Login> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
                   SizedBox(
@@ -209,8 +209,8 @@ class LoginState extends State<Login> {
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Colors.white,
-                            onPrimary: Color.fromRGBO(238, 29, 82, 1),
-                            padding: EdgeInsets.symmetric(
+                            onPrimary: const Color.fromRGBO(238, 29, 82, 1),
+                            padding: const EdgeInsets.symmetric(
                               vertical: 12,
                             ),
                             shape: RoundedRectangleBorder(
@@ -237,7 +237,7 @@ class LoginState extends State<Login> {
                           ),
                           
                         
-                        child: Text(
+                        child: const Text(
                           'LOGIN',
                           style: TextStyle(
                             fontWeight: FontWeight.w400,

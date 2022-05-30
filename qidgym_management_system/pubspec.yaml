@@ -46,6 +46,10 @@ dependencies:
   url_launcher: ^6.1.1
   google_sign_in: ^5.3.1
   provider: ^6.0.2
+  google_fonts: ^3.0.1
+  flutter_advanced_segment: ^3.0.1
+  cupertino_tabbar: ^2.0.0
+  flutter_toggle_tab: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -74,7 +78,9 @@ flutter:
   - assets/BG3.jpg
   - assets/loading.png
   - assets/QydLogo2.png
+  - assets/barcode.png
   - assets/QydLogoGrey.png
+  - assets/QydLogoGrey2.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -5,6 +5,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:qidgym_management_system/ui/screens/home/home.dart';
 import 'package:qidgym_management_system/ui/screens/booking/booking.dart';
 import 'package:qidgym_management_system/ui/screens/membership/membership.dart';
+import 'package:qidgym_management_system/ui/screens/membership/membership_screen.dart';
 import 'package:qidgym_management_system/ui/screens/profile/profile.dart';
 
 PersistentTabController _controller = PersistentTabController(initialIndex: 0);
@@ -46,7 +47,7 @@ class MainInterfaces extends StatelessWidget {
 }
 
 List<Widget> _buildScreens() {
-  return [const Home(), const Membership(), const Booking(), const Profile()];
+  return [const Home(), const MembershipScreen(), const Booking(), const Profile()];
 }
 
 List<PersistentBottomNavBarItem> _navBarsItems() {

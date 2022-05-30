@@ -12,6 +12,7 @@ class UserCollection {
   String? phone;
   String? address;
   String? dpUrl;
+  String? userType;
   late final AuthService _auth;
 
   final CollectionReference _userCollection =
@@ -27,6 +28,7 @@ class UserCollection {
       'phone': phone,
       'address': address,
       'dpUrl': dpUrl,
+      'userType': 'member',
     });
   }
 }
