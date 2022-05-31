@@ -1,26 +1,37 @@
-import 'package:flutter/cupertino.dart';
-import 'package:qidgym_management_system/services/user.dart';
+import 'package:flutter/material.dart';
+import 'package:map_mvvm/map_mvvm.dart';
+import 'package:qidgym_management_system/app/service_locator.dart';
 
-class ProfileViewModel extends ChangeNotifier {
-  // TextEditingController name = TextEditingController();
-  // TextEditingController email = TextEditingController();
-  // TextEditingController nric = TextEditingController();
-  // TextEditingController phone = TextEditingController();
-  // TextEditingController address = TextEditingController();
-  // TextEditingController dpUrl = TextEditingController();
-  // late String name1;
+import '../../../services/profile/current_user.dart';
+import '../../../services/profile/user.dart';
 
-  late final UserCollection _dbService;
+class ProfileViewModel extends Viewmodel {
+  TextEditingController name = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController address = TextEditingController();
+  TextEditingController dpUrl = TextEditingController();
 
-  Future updateData({
+  final AuthService _authService = locator<AuthService>();
+  final UserCollection _dbUser = locator<UserCollection>();
+
+  Future updatePersonalInfo({
     required String name,
     required String email,
     required String nric,
-    required String phone,
     required String address,
+    required String phone,
+    required String userType,
     required String dpUrl,
   }) async {
-    await _dbService.updatePersonalInfo(
-        name, email, nric, phone, address, dpUrl);
+    await _dbUser.updatePersonalInfo(
+        name, email, nric, address, phone, userType, dpUrl);
+  }
+
+  Future<Map<dynamic, dynamic>>? getPersonalInfo() async {
+    return _dbUser.getPersonalInfo();
+  }
+
+  Future getCurrentUser() async {
+    return _authService.getCurrentUser();
   }
 }

@@ -8,10 +8,12 @@ import 'package:qidgym_management_system/ui/screens/membership/membership.dart';
 import 'package:qidgym_management_system/ui/screens/membership/membership_screen.dart';
 import 'package:qidgym_management_system/ui/screens/profile/profile.dart';
 
+import 'screens/profile/profile_screen.dart';
+
 PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
 class MainInterfaces extends StatelessWidget {
-  const MainInterfaces({Key? key,required User? user}) : super(key: key);
+  const MainInterfaces({Key? key, required User? user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,12 @@ class MainInterfaces extends StatelessWidget {
 }
 
 List<Widget> _buildScreens() {
-  return [const Home(), const MembershipScreen(), const Booking(), const Profile()];
+  return [
+    const Home(),
+    const MembershipScreen(),
+    const Booking(),
+    const Profile()
+  ];
 }
 
 List<PersistentBottomNavBarItem> _navBarsItems() {

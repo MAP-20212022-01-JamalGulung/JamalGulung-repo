@@ -52,6 +52,10 @@ dependencies:
   flutter_toggle_tab: ^1.2.0
   intl: ^0.17.0
   group_list_view: ^1.1.1
+  loading_indicator: ^3.1.0
+
+  map_mvvm:
+    path: packages/map_mvvm
 
 dev_dependencies:
   flutter_test:
