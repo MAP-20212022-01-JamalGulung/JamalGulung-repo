@@ -4,13 +4,9 @@ import "package:flutter/material.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:map_mvvm/map_mvvm.dart';
+import 'package:qidgym_management_system/app/service_locator.dart';
 import 'package:qidgym_management_system/ui/screens/profile/profile_viewmodal.dart';
 import 'package:qidgym_management_system/ui/welcome.dart';
-
-import '../../../app/service_locator.dart';
-import '../../../services/profile/current_user.dart';
-
-String? documentId = FirebaseAuth.instance.currentUser?.uid;
 
 class ProfileBody extends StatefulWidget {
   const ProfileBody({Key? key}) : super(key: key);
@@ -20,6 +16,7 @@ class ProfileBody extends StatefulWidget {
 }
 
 class _ProfileBodyState extends State<ProfileBody> {
+  final ProfileViewModel viewmodel = locator<ProfileViewModel>();
   final _formKey = GlobalKey<FormState>();
   final GlobalKey _nameKey = new GlobalKey();
   final GlobalKey _phoneKey = new GlobalKey();
@@ -51,9 +48,10 @@ class _ProfileBodyState extends State<ProfileBody> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
-      child: View<ProfileViewModel>(
-        builder: (_, viewmodel) => Container(
-          child: FutureBuilder<Map>(
+      alignment: Alignment.center,
+      child: Container(
+        child: View<ProfileViewModel>(
+          builder: (_, viewmodel) => FutureBuilder<Map>(
               future: viewmodel.getPersonalInfo(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
@@ -648,7 +646,6 @@ class _ProfileBodyState extends State<ProfileBody> {
                     const SizedBox(
                       height: 5,
                     ),
-                    Text(documentId!),
                     LoadingIndicator(
                         indicatorType: Indicator.ballClipRotatePulse,
                         colors: const [Color.fromRGBO(238, 29, 82, 1)],

@@ -53,6 +53,7 @@ dependencies:
   intl: ^0.17.0
   group_list_view: ^1.1.1
   loading_indicator: ^3.1.0
+  get_it: ^7.2.0
 
   map_mvvm:
     path: packages/map_mvvm

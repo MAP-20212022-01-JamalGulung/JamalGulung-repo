@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:qidgym_management_system/app/service_locator.dart';
 import 'package:qidgym_management_system/services/profile/current_user.dart';
-
-import '../../app/service_locator.dart';
 
 class UserCollection {
   final String? uid;
@@ -13,7 +12,7 @@ class UserCollection {
 
   Future<Map> getPersonalInfo() async {
     final uid = await _auth.getCurrentUser();
-    var users;
+    Map<String, dynamic> users;
     var res = await _userCollection.doc(uid).get().then((ds) {
       users = {
         'name': ds['name'],

@@ -1,15 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:map_mvvm/map_mvvm.dart';
 import 'package:qidgym_management_system/app/service_locator.dart';
-
-import '../../../services/profile/current_user.dart';
-import '../../../services/profile/user.dart';
+import 'package:qidgym_management_system/services/profile/current_user.dart';
+import 'package:qidgym_management_system/services/profile/user.dart';
 
 class ProfileViewModel extends Viewmodel {
-  TextEditingController name = TextEditingController();
-  TextEditingController phone = TextEditingController();
-  TextEditingController address = TextEditingController();
-  TextEditingController dpUrl = TextEditingController();
+  // TextEditingController name = TextEditingController();
+  // TextEditingController phone = TextEditingController();
+  // TextEditingController address = TextEditingController();
+  // TextEditingController dpUrl = TextEditingController();
 
   final AuthService _authService = locator<AuthService>();
   final UserCollection _dbUser = locator<UserCollection>();

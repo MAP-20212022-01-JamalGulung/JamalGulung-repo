@@ -8,6 +8,7 @@ import 'app/service_locator.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  initializeServiceLocator();
   runApp(MaterialApp(
       title: 'QidGym App',
       debugShowCheckedModeBanner: false,
