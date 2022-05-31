@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:qidgym_management_system/ui/maininterfaces.dart';
+import 'package:qidgym_management_system/ui/member_interface.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Reset extends StatefulWidget {

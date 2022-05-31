@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import "package:flutter/material.dart";
-import 'package:qidgym_management_system/ui/maininterfaces.dart';
+// import 'package:qidgym_management_system/ui/maininterfaces.dart';
+import 'package:qidgym_management_system/ui/member_interface.dart';
 import 'package:qidgym_management_system/ui/screens/reset/reset.dart';
 import '../../../model/PersonData.dart';
 
@@ -107,12 +108,13 @@ class LoginState extends State<Login> {
                             decoration: InputDecoration(
                               filled: true,
                               fillColor: const Color.fromRGBO(40, 40, 41, 1),
-      
+
                               // contentPadding: EdgeInsets.all(0.0),
                               focusedBorder: OutlineInputBorder(
                                   borderSide: const BorderSide(
                                       width: 2,
-                                      color: const Color.fromRGBO(238, 29, 82, 1)),
+                                      color:
+                                          const Color.fromRGBO(238, 29, 82, 1)),
                                   borderRadius: BorderRadius.circular(10)),
                               prefixIcon: const Padding(
                                 padding: const EdgeInsets.all(0.0),
@@ -123,8 +125,8 @@ class LoginState extends State<Login> {
                                 ),
                               ),
                               hintText: "Enter your email",
-                              hintStyle:
-                                  const TextStyle(color: Colors.grey, fontSize: 13),
+                              hintStyle: const TextStyle(
+                                  color: Colors.grey, fontSize: 13),
                             ),
                           ),
                           const SizedBox(
@@ -173,8 +175,8 @@ class LoginState extends State<Login> {
                                 ),
                               ),
                               hintText: "Enter your password",
-                              hintStyle:
-                                  const TextStyle(color: Colors.grey, fontSize: 13),
+                              hintStyle: const TextStyle(
+                                  color: Colors.grey, fontSize: 13),
                             ),
                           ),
                           const SizedBox(
@@ -216,28 +218,25 @@ class LoginState extends State<Login> {
                               ),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50))),
-                          onPressed:
-                            (_emailTextController.text==""||_passwordTextController.text=="")?null:(
-                               () async {User? user =
-                                await UserAuth().signInUsingEmailPassword(
-                              email: _emailTextController.text,
-                              password: _passwordTextController.text,
-                            );
-      
-                            if(user!=null){
-      
-                              Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      MainInterfaces(user: user),
-                                ),
-                              );
-                            }
-                              
-                            }
-                            ),
-                            
-                          
+                          onPressed: (_emailTextController.text == "" ||
+                                  _passwordTextController.text == "")
+                              ? null
+                              : (() async {
+                                  User? user =
+                                      await UserAuth().signInUsingEmailPassword(
+                                    email: _emailTextController.text,
+                                    password: _passwordTextController.text,
+                                  );
+
+                                  if (user != null) {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            MainInterfaces(user: user),
+                                      ),
+                                    );
+                                  }
+                                }),
                           child: const Text(
                             'LOGIN',
                             style: TextStyle(
