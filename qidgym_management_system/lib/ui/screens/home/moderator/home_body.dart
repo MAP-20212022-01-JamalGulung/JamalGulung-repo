@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
-import 'package:loading_indicator/loading_indicator.dart';
+// import 'package:loading_indicator/loading_indicator.dart';
 import 'package:map_mvvm/map_mvvm.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_viewmodal.dart';
 
@@ -37,12 +37,13 @@ class _HomeModeratorBody extends State<HomeModeratorBody> {
                     SizedBox(
                       height: 5,
                     ),
-                    LoadingIndicator(
-                        indicatorType: Indicator.ballClipRotatePulse,
-                        colors: const [Color.fromRGBO(238, 29, 82, 1)],
-                        strokeWidth: 2,
-                        backgroundColor: Color.fromRGBO(24, 24, 24, 1),
-                        pathBackgroundColor: Color.fromRGBO(24, 24, 24, 1)),
+                    Text("Loading")
+                    // LoadingIndicator(
+                    //     indicatorType: Indicator.ballClipRotatePulse,
+                    //     colors: const [Color.fromRGBO(238, 29, 82, 1)],
+                    //     strokeWidth: 2,
+                    //     backgroundColor: Color.fromRGBO(24, 24, 24, 1),
+                    //     pathBackgroundColor: Color.fromRGBO(24, 24, 24, 1)),
                   ],
                 );
               }),

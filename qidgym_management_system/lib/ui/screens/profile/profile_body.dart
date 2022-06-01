@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:loading_indicator/loading_indicator.dart';
+// import 'package:loading_indicator/loading_indicator.dart';
 import 'package:map_mvvm/map_mvvm.dart';
 import 'package:qidgym_management_system/app/service_locator.dart';
 import 'package:qidgym_management_system/ui/screens/profile/profile_viewmodal.dart';
@@ -720,12 +720,13 @@ class _ProfileBodyState extends State<ProfileBody> {
                     const SizedBox(
                       height: 5,
                     ),
-                    LoadingIndicator(
-                        indicatorType: Indicator.ballClipRotatePulse,
-                        colors: const [Color.fromRGBO(238, 29, 82, 1)],
-                        strokeWidth: 2,
-                        backgroundColor: Color.fromRGBO(24, 24, 24, 1),
-                        pathBackgroundColor: Color.fromRGBO(24, 24, 24, 1)),
+                    Text("Loading")
+                    // LoadingIndicator(
+                    //     indicatorType: Indicator.ballClipRotatePulse,
+                    //     colors: const [Color.fromRGBO(238, 29, 82, 1)],
+                    //     strokeWidth: 2,
+                    //     backgroundColor: Color.fromRGBO(24, 24, 24, 1),
+                    //     pathBackgroundColor: Color.fromRGBO(24, 24, 24, 1)),
                   ],
                 );
               }),
