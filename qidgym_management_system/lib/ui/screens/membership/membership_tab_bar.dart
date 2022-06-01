@@ -34,6 +34,7 @@ class _MembershipTabBar extends State<MembershipTabBar> {
                   length: 2, //length of tabs
                   initialIndex: 0,
                   child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         Container(
@@ -60,7 +61,7 @@ class _MembershipTabBar extends State<MembershipTabBar> {
                               ),
                               Container(
                                 child: Center(
-                                  child: Text('History',
+                                  child: Text('No History',
                                       style: TextStyle(
                                           fontWeight: FontWeight.w800,
                                           fontSize: 20,

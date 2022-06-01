@@ -61,7 +61,7 @@ class _MembershipCurrent extends State<MembershipCurrent> {
                                   padding:
                                       const EdgeInsets.fromLTRB(0, 0, 20, 0),
                                   child: Text(
-                                    'MONTHLY MEMBER',
+                                    'QIDGYM MEMBER',
                                     // textAlign: TextAlign.right,
                                     style: GoogleFonts.oswald(
                                         textStyle: Theme.of(context)
@@ -248,7 +248,7 @@ class _MembershipCurrent extends State<MembershipCurrent> {
       onPressed: () {},
     );
     Widget continueButton = TextButton(
-      child: Text("Continue"),
+      child: Text("Confirm"),
       onPressed: () {},
     );
 
