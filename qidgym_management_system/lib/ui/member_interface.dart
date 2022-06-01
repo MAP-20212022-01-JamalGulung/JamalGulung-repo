@@ -51,8 +51,8 @@ class MainInterfaces extends StatelessWidget {
 
 List<Widget> _buildScreens() {
   return [
-    const Home(),
-    // const HomeModerator(),
+    // const Home(),
+    const HomeModerator(),
     const MembershipScreen(),
     const Booking(),
     const Profile()
