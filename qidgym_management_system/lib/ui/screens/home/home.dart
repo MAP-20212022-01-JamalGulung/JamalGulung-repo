@@ -1,13 +1,26 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
 import 'package:qidgym_management_system/services/world_time.dart';
-import 'dart:developer';
 
-class Home extends StatelessWidget {
+Map<String, dynamic>? data;
+
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+  @override
+  State<StatefulWidget> createState() => HomeState();
+}
 
+//define end dan start
+// String day = currentDay;
+String end = "";
+String start = "";
+bool check = true;
+
+class HomeState extends State<Home> {
+  final CollectionReference _operation =
+      FirebaseFirestore.instance.collection("OperationHour");
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: const Color.fromRGBO(24, 24, 24, 1),
@@ -56,21 +69,66 @@ class Home extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.access_time,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "OPEN HOURS from 10AM to 8PM",
-                    style: TextStyle(color: Colors.white),
-                  )
-                ],
-              ),
+
+              FutureBuilder<DocumentSnapshot<Object?>>(
+                  future: _operation.doc(currentDay).get(),
+                  // .where('day', isEqualTo: currentDay)
+                  // .snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Text('Something went wrong');
+                    }
+
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Text("Loading");
+                    }
+                    Map<String, dynamic> data =
+                        snapshot.data!.data() as Map<String, dynamic>;
+
+                    // return ListView(
+                    //     children: snapshot.data!.docs
+                    //         .map((DocumentSnapshot document) {
+                    //   data = document.data as Map<String, dynamic>;
+                    //   List<String> strArr = [];
+                    //   strArr = List.from(data!['day']);
+
+                    
+
+                    return Row(
+                      children: [
+                        Icon(
+                          Icons.access_time,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "OPEN HOURS from ${data['start']} to ${data['end']}",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    );
+
+                    // }).toList());
+                  }),
+
+              //Dummy
+              // Row(
+              //   children: [
+              //     Icon(
+              //       Icons.access_time,
+              //       color: Colors.white,
+              //     ),
+              //     SizedBox(
+              //       width: 10,
+              //     ),
+              //     Text(
+              //       "OPEN HOURS from 08.00am to 09.00pm",
+              //       style: TextStyle(color: Colors.white),
+              //     ),
+              //   ],
+              // ),
               SizedBox(
                 height: 50,
               ),
@@ -114,7 +172,8 @@ class Home extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               "Summer Body Challenge",
-                              style: TextStyle(color: Colors.white, fontSize: 18),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
                             ),
                           )
                         ],
@@ -134,7 +193,7 @@ class Home extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         height: 134,
                         width: 160,
-        
+
                         child: Stack(children: [
                           Container(
                             decoration: BoxDecoration(
@@ -168,7 +227,7 @@ class Home extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         height: 134,
                         width: 160,
-        
+
                         child: Stack(children: [
                           Container(
                             decoration: BoxDecoration(
@@ -200,7 +259,7 @@ class Home extends StatelessWidget {
   }
 }
 
-String getDay(){
+String getDay() {
   String day = "";
 
   if (currentDay == "Sunday") {
