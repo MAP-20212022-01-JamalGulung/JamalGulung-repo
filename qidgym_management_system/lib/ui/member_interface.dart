@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:qidgym_management_system/ui/screens/home/home.dart';
 import 'package:qidgym_management_system/ui/screens/booking/booking.dart';
+import 'package:qidgym_management_system/ui/screens/home/moderator/home_screen.dart';
 import 'package:qidgym_management_system/ui/screens/membership/membership.dart';
 import 'package:qidgym_management_system/ui/screens/membership/membership_screen.dart';
 import 'package:qidgym_management_system/ui/screens/profile/profile.dart';
@@ -50,7 +51,8 @@ class MainInterfaces extends StatelessWidget {
 
 List<Widget> _buildScreens() {
   return [
-    const Home(),
+    // const Home(),
+    const HomeModerator(),
     const MembershipScreen(),
     const Booking(),
     const Profile()
