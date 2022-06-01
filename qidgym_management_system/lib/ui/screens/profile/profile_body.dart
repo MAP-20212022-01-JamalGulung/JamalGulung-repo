@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:map_mvvm/map_mvvm.dart';
 import 'package:qidgym_management_system/app/service_locator.dart';
@@ -36,6 +39,8 @@ class _ProfileBodyState extends State<ProfileBody> {
   String _address = "";
   String _userType = "";
   String _dpUrl = "";
+  File? imageFile;
+  bool image = false;
   bool _isSigningOut = false;
   bool loading = false;
 
@@ -46,6 +51,30 @@ class _ProfileBodyState extends State<ProfileBody> {
 
   @override
   Widget build(BuildContext context) {
+    void _openCamImage(BuildContext context) async {
+      final pickedFile =
+          await ImagePicker().getImage(source: ImageSource.camera);
+      final pickedImageFile = File(pickedFile!.path);
+      setState(() async {
+        imageFile = pickedImageFile;
+        image = true;
+        dynamic result = await viewmodel.updateDp(imageFile: imageFile);
+      });
+
+      //Navigator.pop(context);
+    }
+
+    void _openLibImage(BuildContext context) async {
+      final pickedFile =
+          await ImagePicker().getImage(source: ImageSource.gallery);
+      final pickedImageFile = File(pickedFile!.path);
+      setState(() async {
+        imageFile = pickedImageFile;
+        image = true;
+        dynamic result = await viewmodel.updateDp(imageFile: imageFile);
+      });
+    }
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
       alignment: Alignment.center,
@@ -148,12 +177,55 @@ class _ProfileBodyState extends State<ProfileBody> {
                                           color: const Color.fromRGBO(
                                               40, 40, 41, 1),
                                           onPressed: () {
-                                            // Navigator.push(
-                                            //     context,
-                                            //     MaterialPageRoute(
-                                            //       builder: (context) =>
-                                            //           const EditImage(),
-                                            //     ));
+                                            showDialog(
+                                                context: context,
+                                                builder: (ctx) => AlertDialog(
+                                                      backgroundColor:
+                                                          Color.fromRGBO(
+                                                              40, 40, 41, 1),
+                                                      title: Text(
+                                                        "Update Image",
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                      content:
+                                                          SingleChildScrollView(
+                                                        child: ListBody(
+                                                          children: [
+                                                            SizedBox(
+                                                              height: 10,
+                                                            ),
+                                                            ListTile(
+                                                              onTap: () async {
+                                                                Navigator.of(
+                                                                        ctx)
+                                                                    .pop();
+                                                                _openCamImage(
+                                                                    context);
+                                                              },
+                                                              title: Center(
+                                                                child: Text(
+                                                                    "Camera"),
+                                                              ),
+                                                            ),
+                                                            ListTile(
+                                                              onTap: () async {
+                                                                Navigator.of(
+                                                                        ctx)
+                                                                    .pop();
+                                                                _openLibImage(
+                                                                    context);
+                                                              },
+                                                              title: Center(
+                                                                child: Text(
+                                                                    "Library"),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ));
                                           },
                                         ),
                                       )),
@@ -444,7 +516,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                                                             setState(() =>
                                                                 loading = true);
 
-                                                            if (name.isEmpty) {
+                                                            if (phone.isEmpty) {
                                                               setState(() {
                                                                 phone = _phone;
                                                               });
@@ -563,9 +635,11 @@ class _ProfileBodyState extends State<ProfileBody> {
                                                             setState(() =>
                                                                 loading = true);
 
-                                                            if (name.isEmpty) {
+                                                            if (address
+                                                                .isEmpty) {
                                                               setState(() {
-                                                                name = _name;
+                                                                address =
+                                                                    _address;
                                                               });
                                                             }
 

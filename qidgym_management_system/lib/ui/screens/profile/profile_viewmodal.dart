@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:map_mvvm/map_mvvm.dart';
 import 'package:qidgym_management_system/app/service_locator.dart';
 import 'package:qidgym_management_system/services/profile/current_user.dart';
@@ -23,6 +25,12 @@ class ProfileViewModel extends Viewmodel {
   }) async {
     await _dbUser.updatePersonalInfo(
         name, email, nric, address, phone, userType, dpUrl);
+  }
+
+  Future updateDp({
+    File? imageFile,
+  }) async {
+    await _dbUser.updateDp(imageFile);
   }
 
   Future<Map<dynamic, dynamic>>? getPersonalInfo() async {
