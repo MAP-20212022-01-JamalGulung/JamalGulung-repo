@@ -55,19 +55,16 @@ class _MembershipTabBar extends State<MembershipTabBar> {
                             child: TabBarView(children: <Widget>[
                               Container(
                                 child: Center(
-                                  child: Text('Current',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w800,
-                                          fontSize: 20,
-                                          color: Colors.white)),
+                                  child: MembershipCurrent(title: ''),
                                 ),
                               ),
                               Container(
                                 child: Center(
                                   child: Text('History',
                                       style: TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.bold)),
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 20,
+                                          color: Colors.white)),
                                 ),
                               ),
                             ]))

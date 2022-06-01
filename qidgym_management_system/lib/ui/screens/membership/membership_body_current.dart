@@ -216,18 +216,18 @@ class _MembershipCurrent extends State<MembershipCurrent> {
                     width: 5,
                     height: 0,
                     child: Container(color: Colors.transparent)),
-                MaterialButton(
-                  color: const Color.fromRGBO(84, 84, 84, 1),
-                  // color: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                  ),
-                  onPressed: () {},
-                  child: const Text(
-                    "TERMINATE",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
+                // MaterialButton(
+                //   color: const Color.fromRGBO(84, 84, 84, 1),
+                //   // color: Colors.blue,
+                //   shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(18.0),
+                //   ),
+                //   onPressed: () {},
+                //   child: const Text(
+                //     "TERMINATE",
+                //     style: TextStyle(color: Colors.white),
+                //   ),
+                // ),
               ],
             ),
             const Divider(
