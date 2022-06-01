@@ -206,7 +206,9 @@ class _MembershipCurrent extends State<MembershipCurrent> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    showAlertDialog(context);
+                  },
                   child: const Text(
                     "RENEW",
                     style: TextStyle(color: Colors.white),
@@ -236,6 +238,37 @@ class _MembershipCurrent extends State<MembershipCurrent> {
           ],
         ),
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: Text("Cancel"),
+      onPressed: () {},
+    );
+    Widget continueButton = TextButton(
+      child: Text("Continue"),
+      onPressed: () {},
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Renew Membership"),
+      content:
+          Text("Would you like to renew your membership for another 3 months?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
