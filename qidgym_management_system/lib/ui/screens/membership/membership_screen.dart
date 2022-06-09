@@ -14,7 +14,7 @@ class MembershipScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Color.fromRGBO(24, 24, 24, 1),
         appBar: MembershipAppBar(),
-        body: MemberListBody(),
+        body: MembershipTabBar(title: '',),
       ),
     );
   }
