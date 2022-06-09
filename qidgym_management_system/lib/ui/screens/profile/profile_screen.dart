@@ -12,7 +12,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Color.fromRGBO(24, 24, 24, 1),

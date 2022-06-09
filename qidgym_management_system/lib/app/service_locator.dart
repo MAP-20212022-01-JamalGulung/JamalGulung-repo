@@ -13,6 +13,7 @@ void initializeServiceLocator() => ServiceLocator.init((locator) async {
       locator.registerLazySingleton<UserCollection>(() => UserCollection());
       locator.registerLazySingleton<OperationHour>(() => OperationHour());
       locator.registerLazySingleton<ProfileViewModel>(() => ProfileViewModel());
+      // locator.registerLazySingleton<MemberListViewModel>(() => MemberListViewModel());
       locator.registerLazySingleton<HomeModeratorViewModel>(
           () => HomeModeratorViewModel());
       locator.registerLazySingleton<Profile>(() => const Profile());
