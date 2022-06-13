@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qidgym_management_system/ui/screens/home/home.dart';
+import 'package:qidgym_management_system/ui/screens/home/customer/home.dart';
 import 'package:qidgym_management_system/ui/screens/membership/admin/member_list_view.dart';
 import 'package:qidgym_management_system/ui/screens/membership/membership_body_current.dart';
 

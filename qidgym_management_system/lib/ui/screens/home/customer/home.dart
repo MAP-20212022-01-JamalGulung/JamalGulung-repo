@@ -76,11 +76,11 @@ class HomeState extends State<Home> {
                   // .snapshots(),
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
-                      return Text('Something went wrong');
+                      return Text('Something went wrong',style: TextStyle(color: Colors.white),);
                     }
 
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Text("Loading");
+                      return Text("Loading",style: TextStyle(color: Colors.white));
                     }
                     Map<String, dynamic> data =
                         snapshot.data!.data() as Map<String, dynamic>;
@@ -92,8 +92,6 @@ class HomeState extends State<Home> {
                     //   List<String> strArr = [];
                     //   strArr = List.from(data!['day']);
 
-                    
-
                     return Row(
                       children: [
                         Icon(
@@ -104,9 +102,10 @@ class HomeState extends State<Home> {
                           width: 10,
                         ),
                         Text(
-                          "OPEN HOURS from ${data['start']} to ${data['end']}",
+                           "OPEN HOURS from ${data['start']} to ${data['end']}",
+                          //"hehe",
                           style: TextStyle(color: Colors.white),
-                        ),
+                        )
                       ],
                     );
 
