@@ -13,8 +13,8 @@ import 'screens/profile/profile_screen.dart';
 
 PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
-class MainInterfaces extends StatelessWidget {
-  const MainInterfaces({Key? key, required User? user}) : super(key: key);
+class ModeratorInterfaces extends StatelessWidget {
+  const ModeratorInterfaces({Key? key, required User? user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class MainInterfaces extends StatelessWidget {
 
 List<Widget> _buildScreens() {
   return [
-    const Home(),
+    const HomeModerator(),
     const MembershipScreen(),
     const Booking(),
     const Profile()
@@ -74,7 +74,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
         FontAwesomeIcons.idCard,
         size: 20,
       ),
-      title: ("Member"),
+      title: ("Membership"),
       activeColorPrimary: const Color.fromRGBO(238, 29, 82, 1),
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),

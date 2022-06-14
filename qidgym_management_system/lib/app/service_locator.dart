@@ -5,6 +5,7 @@ import 'package:qidgym_management_system/services/profile/user.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_viewmodal.dart';
 import 'package:qidgym_management_system/ui/screens/profile/profile_screen.dart';
 import 'package:qidgym_management_system/ui/screens/profile/profile_viewmodal.dart';
+import 'package:qidgym_management_system/ui/wrapper_view_model.dart';
 
 final locator = ServiceLocator.locator;
 
@@ -13,7 +14,7 @@ void initializeServiceLocator() => ServiceLocator.init((locator) async {
       locator.registerLazySingleton<UserCollection>(() => UserCollection());
       locator.registerLazySingleton<OperationHour>(() => OperationHour());
       locator.registerLazySingleton<ProfileViewModel>(() => ProfileViewModel());
-      // locator.registerLazySingleton<MemberListViewModel>(() => MemberListViewModel());
+      locator.registerLazySingleton<WrapperViewmodel>(() => WrapperViewmodel());
       locator.registerLazySingleton<HomeModeratorViewModel>(
           () => HomeModeratorViewModel());
       locator.registerLazySingleton<Profile>(() => const Profile());

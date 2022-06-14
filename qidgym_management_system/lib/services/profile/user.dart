@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:qidgym_management_system/app/service_locator.dart';
+import 'package:qidgym_management_system/model/profileDetails.dart';
 import 'package:qidgym_management_system/services/profile/current_user.dart';
 
 class UserCollection {
@@ -29,6 +31,15 @@ class UserCollection {
       return users;
     });
     return res;
+  }
+
+  Future<String> getUserType() async {
+    final uid = await _auth.getCurrentUser();
+    return _userCollection.doc(uid).get().then((ds) {
+      Map data = ds.data() as Map;
+      String userType = data['userType'].toString();
+      return userType;
+    });
   }
 
   Future<void> updatePersonalInfo(String name, String email, String nric,

@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 // import 'package:qidgym_management_system/ui/maininterfaces.dart';
 import 'package:qidgym_management_system/ui/member_interface.dart';
 import 'package:qidgym_management_system/ui/screens/reset/reset.dart';
+import 'package:qidgym_management_system/ui/wrapper.dart';
 import '../../../model/PersonData.dart';
 
 class Login extends StatefulWidget {
@@ -229,10 +230,16 @@ class LoginState extends State<Login> {
                                   );
 
                                   if (user != null) {
+                                    // Navigator.of(context).pushReplacement(
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) =>
+                                    //         MainInterfaces(user: user),
+                                    //   ),
+                                    // );
                                     Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            MainInterfaces(user: user),
+                                            Wrapper(user: user),
                                       ),
                                     );
                                   }
