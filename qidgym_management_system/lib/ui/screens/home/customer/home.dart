@@ -2,7 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
 import 'package:qidgym_management_system/services/world_time.dart';
 import 'package:qidgym_management_system/ui/screens/promotion/customer/viewpromotion.dart';
+import 'dart:math' as math;
+// import 'package:random_color/random_color.dart';
 
+// RandomColor _randomColor = RandomColor();
+// Color _color = _randomColor.randomColor(
+//   colorBrightness: ColorBrightness.light
+// );
 Map<String, dynamic>? data;
 
 class Home extends StatefulWidget {
@@ -135,71 +141,54 @@ class HomeState extends State<Home> {
                 height: 30,
               ),
 
-              ListView(
-                physics: NeverScrollableScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ViewPromo()),
-                      );
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: 150,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/blue.jpg"),
-                              fit: BoxFit.cover),
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Stack(children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(158, 27, 117, 0.7),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(12.0),
-                              child: Text(
-                                "Summer Body Challenge",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20.0),
-                              ),
-                            )
-                          ],
-                        )
-                      ]),
-                    ),
-                  ),
-                  // Container(
-                  //   width: double.infinity,
-                  //   height: 150,
-                  //   color: Colors.blue[600],
-                  //   child: const Center(
-                  //       child: Text(
-                  //     'Item 2',
-                  //     style: TextStyle(fontSize: 18, color: Colors.white),
-                  //   )),
-                  // ),
-                  // Container(
-                  //   width: double.infinity,
-                  //   height: 150,
-                  //   color: Colors.red[600],
-                  //   child: const Center(
-                  //       child: Text(
-                  //     'Item 3',
-                  //     style: TextStyle(fontSize: 18, color: Colors.white),
-                  //   )),
-                  // ),
-                ],
-              )
+              PromotionBox(context),
+
+              // ListView(
+              //   physics: NeverScrollableScrollPhysics(),
+              //   scrollDirection: Axis.vertical,
+              //   shrinkWrap: true,
+              //   children: [
+              //     GestureDetector(
+              //       onTap: () {
+              //         Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //               builder: (context) => const ViewPromo()),
+              //         );
+              //       },
+              //       child: Container(
+              //         width: double.infinity,
+              //         height: 150,
+              //         decoration: BoxDecoration(
+              //             image: DecorationImage(
+              //                 image: AssetImage("assets/blue.jpg"),
+              //                 fit: BoxFit.cover),
+              //             borderRadius: BorderRadius.circular(10)),
+              //         child: Stack(children: [
+              //           Container(
+              //             decoration: BoxDecoration(
+              //                 color: Color.fromRGBO(158, 27, 117, 0.7),
+              //                 borderRadius: BorderRadius.circular(10)),
+              //           ),
+              //           Column(
+              //             mainAxisAlignment: MainAxisAlignment.end,
+              //             children: [
+              //               Padding(
+              //                 padding: EdgeInsets.all(12.0),
+              //                 child: Text(
+              //                   "Summer Body Challenge",
+              //                   style: TextStyle(
+              //                       color: Colors.white, fontSize: 20.0),
+              //                 ),
+              //               )
+              //             ],
+              //           )
+              //         ]),
+              //       ),
+              //     ),
+
+              //   ],
+              // )
 
               // ListView(
               //   scrollDirection: Axis.horizontal,
@@ -346,4 +335,157 @@ String getDay() {
   }
 
   return day;
+}
+
+Widget PromotionBox(BuildContext context) {
+  return StreamBuilder(
+      stream: FirebaseFirestore.instance.collection('Promotion').snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text("Loading");
+        }
+
+        return ListView(
+          physics: NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          children: snapshot.data!.docs.map((DocumentSnapshot document){
+            data = document.data() as Map<String, dynamic>;
+
+            return Column(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>  ViewPromo(docId: document.id,)),
+                    );
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 125,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(data!['pic']),
+                            fit: BoxFit.cover),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Stack(children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(12.0),
+                            child: Text(
+                              data!['title'],
+                              style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w600),
+                            ),
+                          )
+                        ],
+                      )
+                    ]),
+                  ),
+                  
+                ),
+                SizedBox(height: 8,),
+              ],
+              
+            );
+            
+
+
+          }).toList(),
+
+
+          // [
+            // GestureDetector(
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => const ViewPromo()),
+            //     );
+            //   },
+            //   child: Container(
+            //     width: double.infinity,
+            //     height: 150,
+            //     decoration: BoxDecoration(
+            //         image: DecorationImage(
+            //             image: AssetImage("assets/blue.jpg"),
+            //             fit: BoxFit.cover),
+            //         borderRadius: BorderRadius.circular(10)),
+            //     child: Stack(children: [
+            //       Container(
+            //         decoration: BoxDecoration(
+            //             color: Color.fromRGBO(158, 27, 117, 0.7),
+            //             borderRadius: BorderRadius.circular(10)),
+            //       ),
+            //       Column(
+            //         mainAxisAlignment: MainAxisAlignment.end,
+            //         children: [
+            //           Padding(
+            //             padding: EdgeInsets.all(12.0),
+            //             child: Text(
+            //               "Summer Body Challenge",
+            //               style: TextStyle(color: Colors.white, fontSize: 20.0),
+            //             ),
+            //           )
+            //         ],
+            //       )
+            //     ]),
+            //   ),
+            // ),
+          // ],
+        );
+      });
+
+  // ListView(
+  //   physics: NeverScrollableScrollPhysics(),
+  //   scrollDirection: Axis.vertical,
+  //   shrinkWrap: true,
+  //   children: [
+  //     GestureDetector(
+  //       onTap: () {
+  //         Navigator.push(
+  //           context,
+  //           MaterialPageRoute(builder: (context) => const ViewPromo()),
+  //         );
+  //       },
+  //       child: Container(
+  //         width: double.infinity,
+  //         height: 150,
+  //         decoration: BoxDecoration(
+  //             image: DecorationImage(
+  //                 image: AssetImage("assets/blue.jpg"), fit: BoxFit.cover),
+  //             borderRadius: BorderRadius.circular(10)),
+  //         child: Stack(children: [
+  //           Container(
+  //             decoration: BoxDecoration(
+  //                 color: Color.fromRGBO(158, 27, 117, 0.7),
+  //                 borderRadius: BorderRadius.circular(10)),
+  //           ),
+  //           Column(
+  //             mainAxisAlignment: MainAxisAlignment.end,
+  //             children: [
+  //               Padding(
+  //                 padding: EdgeInsets.all(12.0),
+  //                 child: Text(
+  //                   "Summer Body Challenge",
+  //                   style: TextStyle(color: Colors.white, fontSize: 20.0),
+  //                 ),
+  //               )
+  //             ],
+  //           )
+  //         ]),
+  //       ),
+  //     ),
+  //   ],
+  // );
 }

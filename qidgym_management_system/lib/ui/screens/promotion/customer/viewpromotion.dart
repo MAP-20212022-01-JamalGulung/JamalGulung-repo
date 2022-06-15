@@ -2,12 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
 
 class ViewPromo extends StatefulWidget {
-  const ViewPromo({Key? key}) : super(key: key);
+  final String docId;
+  const ViewPromo({Key? key, required this.docId}) : super(key: key);
   @override
-  State<StatefulWidget> createState() => ViewPromoState();
+  State<StatefulWidget> createState() => ViewPromoState(docId: this.docId);
 }
 
 class ViewPromoState extends State<ViewPromo> {
+  String docId;
+  ViewPromoState({required this.docId});
+
   final CollectionReference _promotion =
       FirebaseFirestore.instance.collection("Promotion");
   @override
@@ -25,7 +29,7 @@ class ViewPromoState extends State<ViewPromo> {
           child: Padding(
             padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
             child: FutureBuilder<DocumentSnapshot<Object?>>(
-                future: _promotion.doc("6xnhwU9PUJwZahFoPTtE").get(),
+                future: _promotion.doc(docId).get(),
                 // .where('day', isEqualTo: currentDay)
                 // .snapshots(),
                 builder: (context, snapshot) {

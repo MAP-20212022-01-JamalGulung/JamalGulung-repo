@@ -58,6 +58,7 @@ dependencies:
 
   map_mvvm:
     path: packages/map_mvvm
+ 
 
 dev_dependencies:
   flutter_test:

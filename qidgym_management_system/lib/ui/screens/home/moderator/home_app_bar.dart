@@ -20,7 +20,7 @@ class _HomeModeratorAppBar extends State<HomeModeratorAppBar> {
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: const Text(
-        "   Home Moderator",
+        "Home Moderator",
         style: TextStyle(fontWeight: FontWeight.w800, fontSize: 32),
       ),
       shape: const Border(
