@@ -39,6 +39,8 @@ dependencies:
   persistent_bottom_nav_bar_v2: ^4.1.10
   font_awesome_flutter: ^10.1.0
   fluttertoast: ^8.0.9
+  material_design_icons_flutter: ^5.0.6595
+  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -58,6 +60,8 @@ dependencies:
 
   map_mvvm:
     path: packages/map_mvvm
+
+  
  
 
 dev_dependencies:

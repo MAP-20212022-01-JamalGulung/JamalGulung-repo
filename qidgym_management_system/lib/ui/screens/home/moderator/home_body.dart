@@ -6,6 +6,7 @@ import 'package:map_mvvm/map_mvvm.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_viewmodal.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_screen.dart';
 import 'package:qidgym_management_system/services/world_time.dart';
+import 'package:qidgym_management_system/ui/screens/promotion/moderator/promotionlist.dart';
 
 class HomeModeratorBody extends StatefulWidget {
   const HomeModeratorBody({Key? key}) : super(key: key);
@@ -141,7 +142,13 @@ class _HomeModeratorBody extends State<HomeModeratorBody> {
                                 fontSize: 24),
                           ),
                           GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PromoList()));
+
+                              },
                               child: Text(
                                 "Edit Promotion",
                                 style: TextStyle(
