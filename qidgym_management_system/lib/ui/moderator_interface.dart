@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:qidgym_management_system/ui/screens/booking/booking_moderator.dart';
 import 'package:qidgym_management_system/ui/screens/home/customer/home.dart';
 import 'package:qidgym_management_system/ui/screens/booking/booking.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_screen.dart';
@@ -53,7 +54,7 @@ List<Widget> _buildScreens() {
   return [
     const HomeModerator(),
     const MembershipScreen(),
-    const Booking(),
+    const BookingModerator(),
     const Profile()
   ];
 }
