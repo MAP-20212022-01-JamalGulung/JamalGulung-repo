@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:map_mvvm/map_mvvm.dart';
 import 'package:qidgym_management_system/app/service_locator.dart';
 import 'package:qidgym_management_system/services/profile/current_user.dart';
-import 'package:qidgym_management_system/services/profile/user.dart';
+import 'package:qidgym_management_system/services/profile/user_services.dart';
 
 class ProfileViewModel extends Viewmodel {
   // TextEditingController name = TextEditingController();

@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 // DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
 dynamic currentDay = DateFormat('EEEE').format(DateTime.now());
 dynamic currentDate = DateFormat('d').format(DateTime.now());
+dynamic tomorrowDate =
+    DateFormat('yMd').format(DateTime.now().add(Duration(days: 1)));
 
 // Future<String> getDay() async {
 //   String day = "";

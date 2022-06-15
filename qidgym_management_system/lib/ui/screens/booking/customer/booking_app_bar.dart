@@ -1,17 +1,17 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 import 'package:qidgym_management_system/services/profile/current_user.dart';
 
-class ProfileAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const ProfileAppBar({Key? key}) : super(key: key);
+class BookingAppBar extends StatefulWidget implements PreferredSizeWidget {
+  const BookingAppBar({Key? key}) : super(key: key);
 
   @override
-  State<ProfileAppBar> createState() => _ProfileAppBarState();
+  State<BookingAppBar> createState() => _BookingAppBarState();
 
   @override
   Size get preferredSize => Size.fromHeight(50);
 }
 
-class _ProfileAppBarState extends State<ProfileAppBar> {
+class _BookingAppBarState extends State<BookingAppBar> {
   @override
   Widget build(BuildContext context) {
     final AuthService _auth = AuthService();
@@ -19,7 +19,7 @@ class _ProfileAppBarState extends State<ProfileAppBar> {
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: const Text(
-        "Profile",
+        "Booking Room",
         style: TextStyle(fontWeight: FontWeight.w800, fontSize: 32),
       ),
       shape: const Border(
