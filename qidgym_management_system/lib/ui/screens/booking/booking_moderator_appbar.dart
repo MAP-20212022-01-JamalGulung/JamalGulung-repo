@@ -12,8 +12,11 @@ class BookingModeratorAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('Booking [Moderator]'),
-      centerTitle: true,
+      title: Text(
+        'Booking',
+        style: TextStyle(
+            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 27),
+      ),
       backgroundColor: const Color.fromRGBO(24, 24, 24, 1),
       foregroundColor: Colors.grey,
     );
