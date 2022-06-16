@@ -12,6 +12,9 @@ import 'package:qidgym_management_system/ui/screens/home/moderator/home_viewmoda
 import 'package:qidgym_management_system/ui/screens/profile/profile_viewmodal.dart';
 import 'package:qidgym_management_system/ui/wrapper_view_model.dart';
 
+import '../ui/screens/membership/admin/member_list_viewmodel.dart';
+import '../ui/screens/profile/profile_screen.dart';
+
 final locator = ServiceLocator.locator;
 
 void initializeServiceLocator() => ServiceLocator.init((locator) async {
@@ -28,4 +31,6 @@ void initializeServiceLocator() => ServiceLocator.init((locator) async {
           () => BookingFormViewModel());
       locator.registerLazySingleton<HomeModeratorViewModel>(
           () => HomeModeratorViewModel());
+      locator.registerLazySingleton<Profile>(() => const Profile());
+      locator.registerFactory<MemberListViewModel>(() => MemberListViewModel());
     });

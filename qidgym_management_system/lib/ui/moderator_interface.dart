@@ -2,13 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import 'package:qidgym_management_system/ui/screens/booking/booking_moderator.dart';
+import 'package:qidgym_management_system/ui/screens/booking/moderator/booking_moderator.dart';
 import 'package:qidgym_management_system/ui/screens/home/customer/home.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_screen.dart';
+import 'package:qidgym_management_system/ui/screens/membership/admin/member_list_screen.dart';
 import 'package:qidgym_management_system/ui/screens/membership/membership.dart';
 import 'package:qidgym_management_system/ui/screens/membership/membership_screen.dart';
 import 'package:qidgym_management_system/ui/screens/profile/profile.dart';
 
+import 'screens/booking/customer/booking_screen.dart';
 import 'screens/profile/profile_screen.dart';
 
 PersistentTabController _controller = PersistentTabController(initialIndex: 0);
@@ -52,8 +54,8 @@ class ModeratorInterfaces extends StatelessWidget {
 List<Widget> _buildScreens() {
   return [
     const HomeModerator(),
-    const MembershipScreen(),
-    const BookingModerator(),
+    const MemberListScreen(),
+    const Booking(),
     const Profile()
   ];
 }

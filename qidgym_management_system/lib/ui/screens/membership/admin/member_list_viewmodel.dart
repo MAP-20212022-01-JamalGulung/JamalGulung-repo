@@ -4,7 +4,7 @@ import 'package:qidgym_management_system/app/service_locator.dart';
 import '../../../../../model/member.dart';
 import '../../../../../services/membership/membership_service.dart';
 
-class MembershipViewmodel extends Viewmodel {
+class MemberListViewModel extends Viewmodel {
   MembershipService get _membershipService => locator<MembershipService>();
 
   Stream<List<MemberModel>> readMembership() {
