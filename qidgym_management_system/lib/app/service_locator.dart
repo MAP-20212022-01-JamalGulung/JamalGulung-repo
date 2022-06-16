@@ -14,6 +14,7 @@ import 'package:qidgym_management_system/ui/wrapper_view_model.dart';
 
 import '../services/booking/booking_moderator_service.dart';
 import '../services/booking/booking_moderator_service_mock.dart';
+import '../ui/screens/booking/booking_moderator_viewmodel.dart';
 import '../ui/screens/booking/moderator/booking_moderator_viewmodel.dart';
 import '../ui/screens/membership/admin/member_list_viewmodel.dart';
 import '../ui/screens/profile/profile_screen.dart';
