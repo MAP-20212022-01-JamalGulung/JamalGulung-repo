@@ -247,12 +247,9 @@ class BookingModeratorDetailsBodyState
                               },
                               label: const Text('Accept',
                                   // ignore: unnecessary_const
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17)),
+                                  style: const TextStyle(fontSize: 17)),
                               highlightElevation: 10.0,
-                              backgroundColor:
-                                  Color.fromARGB(255, 27, 231, 180),
+                              backgroundColor: Color.fromARGB(255, 8, 212, 110),
                             ),
                           ),
                           Padding(
@@ -291,9 +288,7 @@ class BookingModeratorDetailsBodyState
                               },
                               label: const Text('Reject',
                                   // ignore: unnecessary_const
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17)),
+                                  style: const TextStyle(fontSize: 17)),
                               highlightElevation: 10.0,
                               backgroundColor:
                                   Color.fromARGB(255, 232, 103, 86),
