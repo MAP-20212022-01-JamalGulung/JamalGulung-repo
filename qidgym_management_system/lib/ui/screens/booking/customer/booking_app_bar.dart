@@ -19,7 +19,7 @@ class _BookingAppBarState extends State<BookingAppBar> {
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: const Text(
-        "Booking Room",
+        "My Book",
         style: TextStyle(fontWeight: FontWeight.w800, fontSize: 32),
       ),
       shape: const Border(

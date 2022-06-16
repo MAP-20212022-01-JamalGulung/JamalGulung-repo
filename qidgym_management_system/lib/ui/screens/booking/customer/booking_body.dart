@@ -5,6 +5,7 @@ import 'package:qidgym_management_system/model/roomDetails.dart';
 import 'package:qidgym_management_system/services/world_time.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/booking_viewmodel.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/bookingform/bookingform_screen.dart';
+import 'package:qidgym_management_system/ui/screens/booking/customer/mybooking/mybooking_body.dart';
 
 class BookingBody extends StatefulWidget {
   const BookingBody({Key? key}) : super(key: key);
@@ -169,9 +170,15 @@ class _BookingBodyState extends State<BookingBody> {
                   Expanded(
                       flex: 3,
                       child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyBookingBody()),
+                            );
+                          },
                           child: Text(
-                            'MyBooking',
+                            'My Booking',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Color.fromRGBO(238, 29, 82, 1)),

@@ -8,6 +8,7 @@ import 'package:qidgym_management_system/services/room/room_service.dart';
 import 'package:qidgym_management_system/services/room/room_service_firebase.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/booking_viewmodel.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/bookingform/bookingform_viewmodel.dart';
+import 'package:qidgym_management_system/ui/screens/booking/customer/mybooking/mybooking_viewmodel.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_viewmodal.dart';
 import 'package:qidgym_management_system/ui/screens/profile/profile_viewmodal.dart';
 import 'package:qidgym_management_system/ui/wrapper_view_model.dart';
@@ -31,6 +32,8 @@ void initializeServiceLocator() => ServiceLocator.init((locator) async {
       locator.registerLazySingleton<ProfileViewModel>(() => ProfileViewModel());
       locator.registerLazySingleton<WrapperViewmodel>(() => WrapperViewmodel());
       locator.registerLazySingleton<BookingViewModel>(() => BookingViewModel());
+      locator.registerLazySingleton<MyBookingViewModel>(
+          () => MyBookingViewModel());
       locator.registerLazySingleton<BookingFormViewModel>(
           () => BookingFormViewModel());
       locator.registerLazySingleton<HomeModeratorViewModel>(
