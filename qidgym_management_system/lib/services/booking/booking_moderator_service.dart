@@ -3,16 +3,7 @@ import '../../model/booking.dart';
 
 abstract class BookingModeratorService {
   Stream<List<BookingModel>> readBookingList();
-
-  // Future deleteWashingMachine(String wmid);
-}
-
-class BookingModeratorServiceMock extends BookingModeratorService {
-  @override
-  Stream<List<BookingModel>> readBookingList() => FirebaseFirestore.instance
-      .collection('Booking')
-      .snapshots()
-      .map((snapshot) => snapshot.docs
-          .map((doc) => BookingModel.fromJson(doc.data()))
-          .toList());
+  Future acceptBooking(String bookingID);
+  Future rejectBooking(String bookingID);
+  Future<String> getCustomerName(String uid);
 }

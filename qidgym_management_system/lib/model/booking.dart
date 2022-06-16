@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BookingModel {
-  Timestamp date;
+  String bookingID;
+  String date;
   String event_desc;
   String event_name;
   String slot;
@@ -9,7 +10,8 @@ class BookingModel {
   String uid;
 
   BookingModel({
-    required this.date,
+    this.date = "",
+    this.bookingID = "",
     this.event_desc = "",
     this.event_name = "",
     this.slot = "",
@@ -19,6 +21,7 @@ class BookingModel {
 
   factory BookingModel.fromMap(map) {
     return BookingModel(
+      bookingID: map["bookingID"],
       date: map["date"],
       event_desc: map["event_desc"],
       event_name: map["event_name"],
@@ -30,6 +33,7 @@ class BookingModel {
 
   Map<String, dynamic> toMap() {
     return {
+      "bookingID": bookingID,
       "date": date,
       "event_desc": event_desc,
       "event_name": event_name,
@@ -40,6 +44,7 @@ class BookingModel {
   }
 
   Map<String, dynamic> toJson() => {
+        "bookingID": bookingID,
         "date": date,
         "event_desc": event_desc,
         "event_name": event_name,
@@ -49,6 +54,7 @@ class BookingModel {
       };
 
   static BookingModel fromJson(Map<String, dynamic> json) => BookingModel(
+        bookingID: json['bookingID'],
         date: json['date'],
         event_desc: json['event_desc'],
         event_name: json["event_name"],

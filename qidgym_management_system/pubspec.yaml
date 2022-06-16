@@ -60,6 +60,8 @@ dependencies:
 
   map_mvvm:
     path: packages/map_mvvm
+  meta: ^1.4.0
+  shared_preferences: ^2.0.13
 
   
  
