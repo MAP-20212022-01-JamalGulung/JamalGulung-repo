@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:qidgym_management_system/services/booking/booking_moderator_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../model/booking.dart';
 
