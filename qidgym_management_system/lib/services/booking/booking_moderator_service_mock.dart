@@ -19,7 +19,6 @@ class BookingModeratorServiceMock extends BookingModeratorService {
   @override
   Future acceptBooking(String bookingID) async {
     try {
-      final FirebaseAuth auth = FirebaseAuth.instance;
       final docOrder =
           FirebaseFirestore.instance.collection("Booking").doc(bookingID);
 
@@ -32,7 +31,6 @@ class BookingModeratorServiceMock extends BookingModeratorService {
   @override
   Future rejectBooking(String bookingID) async {
     try {
-      final FirebaseAuth auth = FirebaseAuth.instance;
       final docOrder =
           FirebaseFirestore.instance.collection("Booking").doc(bookingID);
 
