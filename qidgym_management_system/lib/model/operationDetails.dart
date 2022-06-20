@@ -1,10 +1,12 @@
 class OperationHour {
-  final String start;
-  final String end;
+  String day;
+  String start;
+  String end;
 
-  OperationHour({required this.start, required this.end});
+  OperationHour({this.day = "", this.start = "", this.end = ""});
 
-  OperationHour.fromJson(Map<String, dynamic> parsedJSON)
-      : start = parsedJSON['start'],
-        end = parsedJSON['end'];
+  Map<String, dynamic> toJson() => {'day': day, 'start': start, 'end': end};
+
+  static OperationHour fromJson(Map<String, dynamic> json) =>
+      OperationHour(day: json['day'], start: json['start'], end: json['end']);
 }
