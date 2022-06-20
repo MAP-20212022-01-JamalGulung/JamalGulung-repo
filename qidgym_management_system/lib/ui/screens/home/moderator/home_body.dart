@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 // import 'package:loading_indicator/loading_indicator.dart';
 import 'package:map_mvvm/map_mvvm.dart';
-import 'package:qidgym_management_system/ui/screens/home/moderator/home_viewmodal.dart';
+import 'package:qidgym_management_system/ui/screens/home/moderator/editschedule/editschedule_screen.dart';
+import 'package:qidgym_management_system/ui/screens/home/moderator/home_viewmodel.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_screen.dart';
 import 'package:qidgym_management_system/services/world_time.dart';
 import 'package:qidgym_management_system/ui/screens/promotion/moderator/promotionlist.dart';
@@ -69,7 +70,13 @@ class _HomeModeratorBody extends State<HomeModeratorBody> {
                                 ]),
                           ),
                           GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EditSchedule()),
+                                );
+                              },
                               child: Text(
                                 "Edit Schedule",
                                 style: TextStyle(
@@ -144,10 +151,9 @@ class _HomeModeratorBody extends State<HomeModeratorBody> {
                           GestureDetector(
                               onTap: () {
                                 Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PromoList()));
-
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => PromoList()));
                               },
                               child: Text(
                                 "Edit Promotion",
