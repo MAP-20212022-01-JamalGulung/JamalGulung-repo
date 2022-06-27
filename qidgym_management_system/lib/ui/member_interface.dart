@@ -5,6 +5,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/booking_screen.dart';
 import 'package:qidgym_management_system/ui/screens/home/customer/home.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/booking.dart';
+import 'package:qidgym_management_system/ui/screens/home/customer/home_screen.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_screen.dart';
 import 'package:qidgym_management_system/ui/screens/membership/membership.dart';
 import 'package:qidgym_management_system/ui/screens/membership/membership_screen.dart';
@@ -52,7 +53,7 @@ class MainInterfaces extends StatelessWidget {
 
 List<Widget> _buildScreens() {
   return [
-    const Home(),
+    const HomeCustomer(),
     const MembershipScreen(),
     const Booking(),
     const Profile()
