@@ -7,6 +7,7 @@ import 'package:qidgym_management_system/ui/screens/home/moderator/editschedule/
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_viewmodel.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_screen.dart';
 import 'package:qidgym_management_system/services/world_time.dart';
+import 'package:qidgym_management_system/ui/screens/promotion/moderator/promolist_screen.dart';
 import 'package:qidgym_management_system/ui/screens/promotion/moderator/promotionlist.dart';
 
 class HomeModeratorBody extends StatefulWidget {

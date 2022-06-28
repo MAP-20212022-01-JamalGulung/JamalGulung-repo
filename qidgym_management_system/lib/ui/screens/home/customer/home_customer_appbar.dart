@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:qidgym_management_system/services/profile/current_user.dart';
 
 class HomeCustomerAppBar extends StatefulWidget implements PreferredSizeWidget {
   const HomeCustomerAppBar({Key? key}) : super(key: key);

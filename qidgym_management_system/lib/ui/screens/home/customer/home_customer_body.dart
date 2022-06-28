@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
 import 'package:qidgym_management_system/services/world_time.dart';
+import 'package:qidgym_management_system/ui/screens/promotion/customer/viewpromotion_screen.dart';
 import 'dart:math' as math;
 import '../../promotion/customer/viewpromotion.dart';
 
