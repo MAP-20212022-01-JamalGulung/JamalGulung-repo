@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
+import 'package:qidgym_management_system/ui/screens/promotion/customer/viewpromotion_screen.dart';
 import 'home.dart';
 import 'package:qidgym_management_system/services/world_time.dart';
 import 'package:qidgym_management_system/ui/screens/promotion/customer/viewpromotion.dart';
@@ -15,7 +16,6 @@ class HomeModerator extends StatefulWidget {
 }
 
 class _HomeModerator extends State<HomeModerator> {
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -66,7 +66,7 @@ Widget PromotionBox(BuildContext context) {
           physics: NeverScrollableScrollPhysics(),
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
-          children: snapshot.data!.docs.map((DocumentSnapshot document){
+          children: snapshot.data!.docs.map((DocumentSnapshot document) {
             data = document.data() as Map<String, dynamic>;
 
             return Column(
@@ -75,7 +75,10 @@ Widget PromotionBox(BuildContext context) {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) =>  ViewPromo(docId: document.id,)),
+                      MaterialPageRoute(
+                          builder: (context) => ViewPromo(
+                                docId: document.id,
+                              )),
                     );
                   },
                   child: Container(
@@ -89,7 +92,9 @@ Widget PromotionBox(BuildContext context) {
                     child: Stack(children: [
                       Container(
                         decoration: BoxDecoration(
-                            color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.5),
+                            color: Color((math.Random().nextDouble() * 0xFFFFFF)
+                                    .toInt())
+                                .withOpacity(0.5),
                             borderRadius: BorderRadius.circular(10)),
                       ),
                       Column(
@@ -99,62 +104,61 @@ Widget PromotionBox(BuildContext context) {
                             padding: EdgeInsets.all(12.0),
                             child: Text(
                               data!['title'],
-                              style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w600),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.w600),
                             ),
                           )
                         ],
                       )
                     ]),
                   ),
-                  
                 ),
-                SizedBox(height: 8,),
+                SizedBox(
+                  height: 8,
+                ),
               ],
-              
             );
-            
-
-
           }).toList(),
 
-
           // [
-            // GestureDetector(
-            //   onTap: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => const ViewPromo()),
-            //     );
-            //   },
-            //   child: Container(
-            //     width: double.infinity,
-            //     height: 150,
-            //     decoration: BoxDecoration(
-            //         image: DecorationImage(
-            //             image: AssetImage("assets/blue.jpg"),
-            //             fit: BoxFit.cover),
-            //         borderRadius: BorderRadius.circular(10)),
-            //     child: Stack(children: [
-            //       Container(
-            //         decoration: BoxDecoration(
-            //             color: Color.fromRGBO(158, 27, 117, 0.7),
-            //             borderRadius: BorderRadius.circular(10)),
-            //       ),
-            //       Column(
-            //         mainAxisAlignment: MainAxisAlignment.end,
-            //         children: [
-            //           Padding(
-            //             padding: EdgeInsets.all(12.0),
-            //             child: Text(
-            //               "Summer Body Challenge",
-            //               style: TextStyle(color: Colors.white, fontSize: 20.0),
-            //             ),
-            //           )
-            //         ],
-            //       )
-            //     ]),
-            //   ),
-            // ),
+          // GestureDetector(
+          //   onTap: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => const ViewPromo()),
+          //     );
+          //   },
+          //   child: Container(
+          //     width: double.infinity,
+          //     height: 150,
+          //     decoration: BoxDecoration(
+          //         image: DecorationImage(
+          //             image: AssetImage("assets/blue.jpg"),
+          //             fit: BoxFit.cover),
+          //         borderRadius: BorderRadius.circular(10)),
+          //     child: Stack(children: [
+          //       Container(
+          //         decoration: BoxDecoration(
+          //             color: Color.fromRGBO(158, 27, 117, 0.7),
+          //             borderRadius: BorderRadius.circular(10)),
+          //       ),
+          //       Column(
+          //         mainAxisAlignment: MainAxisAlignment.end,
+          //         children: [
+          //           Padding(
+          //             padding: EdgeInsets.all(12.0),
+          //             child: Text(
+          //               "Summer Body Challenge",
+          //               style: TextStyle(color: Colors.white, fontSize: 20.0),
+          //             ),
+          //           )
+          //         ],
+          //       )
+          //     ]),
+          //   ),
+          // ),
           // ],
         );
       });

@@ -19,6 +19,36 @@ class BookingServiceFirebase extends BookingService {
           snapshot.docs.map((doc) => Book.fromJson(doc.data())).toList());
 
   @override
+  Stream<List<Book>> readAllBooking() => FirebaseFirestore.instance
+      .collection('Booking')
+      .where('date', isEqualTo: tomorrowDate.toString())
+      // .where('uid', isEqualTo: 'accepted')
+      .snapshots()
+      .map((snapshot) =>
+          snapshot.docs.map((doc) => Book.fromJson(doc.data())).toList());
+
+  @override
+  Stream<List<Book>> readPendingBooking() => FirebaseFirestore.instance
+      .collection('Booking')
+      .where('date', isEqualTo: tomorrowDate.toString())
+      .where('status', isEqualTo: 'pending')
+      .snapshots()
+      .map((snapshot) =>
+          snapshot.docs.map((doc) => Book.fromJson(doc.data())).toList());
+
+  @override
+  Future rejectBooking(String bookingID) async {
+    try {
+      final docOrder =
+          FirebaseFirestore.instance.collection("Booking").doc(bookingID);
+
+      await docOrder.delete();
+    } on Exception catch (e) {
+      return 100;
+    }
+  }
+
+  @override
   Future addBooking(
       String date, String eventDesc, String eventName, String slot) async {
     final uid = await _auth.getCurrentUser();

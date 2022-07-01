@@ -114,8 +114,10 @@ class EditPromoState extends State<EditPromo> {
                         const TextStyle(color: Colors.grey, fontSize: 13),
                   ),
                 ),
-                SizedBox(height: 20,),
-                 Row(
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
                   children: [
                     Icon(
                       MdiIcons.calendarMonth,
@@ -154,8 +156,10 @@ class EditPromoState extends State<EditPromo> {
                         const TextStyle(color: Colors.grey, fontSize: 13),
                   ),
                 ),
-                 SizedBox(height: 20,),
-                 Row(
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
                   children: [
                     Icon(
                       MdiIcons.calendarMonth,
@@ -194,8 +198,10 @@ class EditPromoState extends State<EditPromo> {
                         const TextStyle(color: Colors.grey, fontSize: 13),
                   ),
                 ),
-                 SizedBox(height: 20,),
-                 Row(
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
                   children: [
                     Icon(
                       Icons.description,
@@ -236,8 +242,10 @@ class EditPromoState extends State<EditPromo> {
                         const TextStyle(color: Colors.grey, fontSize: 13),
                   ),
                 ),
-                SizedBox(height: 20,),
-                 Row(
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
                   children: [
                     Icon(
                       Icons.photo_library,
@@ -257,16 +265,40 @@ class EditPromoState extends State<EditPromo> {
                   height: 10.0,
                 ),
                 GestureDetector(
-                  onTap: (){},
+                  onTap: () {},
                   child: Container(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Upload image",style: TextStyle(color: Color.fromRGBO(238, 29, 82, 1),fontWeight: FontWeight.w500),),
+                      child: Text(
+                        "Upload image",
+                        style: TextStyle(
+                            color: Color.fromRGBO(238, 29, 82, 1),
+                            fontWeight: FontWeight.w500),
+                      ),
                     ),
-                    decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10)),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
                   ),
                 ),
-                
+                SizedBox(
+                  height: 20,
+                ),
+                GestureDetector(
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
+                        color: Color.fromRGBO(238, 29, 82, 1)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Text("Submit",
+                          style: TextStyle(color: Colors.white, fontSize: 20)),
+                    ),
+                  ),
+                  onTap: () {},
+                )
               ],
             ),
           ],
