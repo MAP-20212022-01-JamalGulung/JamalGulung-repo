@@ -1,8 +1,9 @@
+import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:map_mvvm/map_mvvm.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'package:http/http.dart' as http;
 import '../../../model/booking.dart';
 import 'booking_moderator_screen.dart';
 import 'booking_moderator_viewmodel.dart';
@@ -19,6 +20,83 @@ class BookingModeratorDetailsBody extends StatefulWidget {
 
 class BookingModeratorDetailsBodyState
     extends State<BookingModeratorDetailsBody> {
+  String _name = 'Khainor';
+  String _email = 'khainorazam25@gmail.com';
+
+  Future acceptedEmail(
+      {required String name,
+      required String email,
+      required String eventName,
+      required String date,
+      required String slot}) async {
+    const serviceID = 'service_pzkcm1g';
+    const templateID = 'template_4mrke17';
+    const userID = 'QY8Jz5if6vPH7YTn7';
+    const accessToken = '3YX7DZ1gdv3N8bVh0NrT_';
+
+    final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode(
+        {
+          'service_id': serviceID,
+          'template_id': templateID,
+          'user_id': userID,
+          'accessToken': accessToken,
+          'template_params': {
+            'user_name': name,
+            'user_email': email,
+            'event_name': eventName,
+            'date': date,
+            'slot': slot
+          },
+        },
+      ),
+    );
+
+    print(response.body);
+  }
+
+  Future rejectedEmail(
+      {required String name,
+      required String email,
+      required String eventName,
+      required String date,
+      required String slot}) async {
+    const serviceID = 'service_pzkcm1g';
+    const templateID = 'template_mtrylfe';
+    const userID = 'QY8Jz5if6vPH7YTn7';
+    const accessToken = '3YX7DZ1gdv3N8bVh0NrT_';
+
+    final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode(
+        {
+          'service_id': serviceID,
+          'template_id': templateID,
+          'user_id': userID,
+          'accessToken': accessToken,
+          'template_params': {
+            'user_name': name,
+            'user_email': email,
+            'event_name': eventName,
+            'date': date,
+            'slot': slot
+          },
+        },
+      ),
+    );
+
+    print(response.body);
+  }
+
   @override
   Widget build(BuildContext context) {
     return View<BookingModeratorViewModel>(
@@ -102,6 +180,7 @@ class BookingModeratorDetailsBodyState
                                   viewmodel.getCustomerName(widget.post.uid),
                               builder: (BuildContext context, snapshot) {
                                 if (snapshot.hasData) {
+                                  _name = snapshot.data.toString();
                                   return Padding(
                                     padding: const EdgeInsets.all(0),
                                     child: Text(
@@ -119,32 +198,33 @@ class BookingModeratorDetailsBodyState
                         ],
                       ),
                       SizedBox(height: 12.0),
-                      // Row(
-                      //   children: [
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(left: 40.0),
-                      //       child: FutureBuilder<String>(
-                      //         future: viewmodel
-                      //             .getCustomerPhoneNum(widget.post.userId),
-                      //         builder: (BuildContext context, snapshot) {
-                      //           if (snapshot.hasData) {
-                      //             return Padding(
-                      //               padding: const EdgeInsets.all(0),
-                      //               child: Text(
-                      //                 "Phone Number: " +
-                      //                     snapshot.data.toString(),
-                      //                 style: const TextStyle(fontSize: 17),
-                      //               ),
-                      //             );
-                      //           } else {
-                      //             return const Text('No data is found!');
-                      //           }
-                      //         },
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      // SizedBox(height: 12.0),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 40.0),
+                            child: FutureBuilder<String>(
+                              future:
+                                  viewmodel.getCustomerEmail(widget.post.uid),
+                              builder: (BuildContext context, snapshot) {
+                                if (snapshot.hasData) {
+                                  _email = snapshot.data.toString();
+                                  return Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Text(
+                                      "Email: " + snapshot.data.toString(),
+                                      style: const TextStyle(
+                                          fontSize: 17, color: Colors.white),
+                                    ),
+                                  );
+                                } else {
+                                  return const Text('No data is found!');
+                                }
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 12.0),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: ListTile(
@@ -238,6 +318,14 @@ class BookingModeratorDetailsBodyState
                                     backgroundColor:
                                         const Color.fromARGB(255, 69, 161, 76),
                                   );
+
+                                  acceptedEmail(
+                                      name: _name,
+                                      email: _email,
+                                      eventName: widget.post.event_name,
+                                      date: widget.post.date,
+                                      slot: widget.post.slot);
+
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -279,6 +367,14 @@ class BookingModeratorDetailsBodyState
                                     backgroundColor:
                                         const Color.fromARGB(255, 69, 161, 76),
                                   );
+
+                                  rejectedEmail(
+                                      name: _name,
+                                      email: _email,
+                                      eventName: widget.post.event_name,
+                                      date: widget.post.date,
+                                      slot: widget.post.slot);
+
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

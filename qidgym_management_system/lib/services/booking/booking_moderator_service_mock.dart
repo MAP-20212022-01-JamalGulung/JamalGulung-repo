@@ -104,4 +104,18 @@ class BookingModeratorServiceMock extends BookingModeratorService {
       return 0;
     }
   }
+
+  Future<String> getCustomerEmail(String uid) async {
+    String email;
+
+    return FirebaseFirestore.instance
+        .collection('Users')
+        .doc(uid)
+        .get()
+        .then((value) {
+      Map data = value.data() as Map;
+      email = data['email'].toString();
+      return email;
+    });
+  }
 }

@@ -11,4 +11,5 @@ abstract class BookingModeratorService {
 
   Future deleteBooking(String bookingID);
   Stream<List<BookingModel>> readPendingBooking();
+  Future<String> getCustomerEmail(String uid);
 }

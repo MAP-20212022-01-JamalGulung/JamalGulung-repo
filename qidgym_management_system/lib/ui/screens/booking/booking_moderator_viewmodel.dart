@@ -27,4 +27,8 @@ class BookingModeratorViewModel extends Viewmodel {
   Future<String> getCustomerName(String uid) async {
     return await _bookingModeratorService.getCustomerName(uid);
   }
+
+  Future<String> getCustomerEmail(String uid) async {
+    return await _bookingModeratorService.getCustomerEmail(uid);
+  }
 }
