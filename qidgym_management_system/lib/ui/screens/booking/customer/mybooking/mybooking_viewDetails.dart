@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:map_mvvm/view.dart';
 import 'package:qidgym_management_system/model/bookingDetails.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/booking_viewmodel.dart';
+import 'package:qidgym_management_system/ui/screens/booking/customer/mybooking/mybooking_app_bar.dart';
 
 import 'mybooking_viewmodel.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 class MyBookingViewDetails extends StatefulWidget {
-  const MyBookingViewDetails({Key? key, required this.title}) : super(key: key);
+  MyBookingViewDetails({Key? key, required this.title}) : super(key: key);
 
-  final String title;
+  String title;
 
   @override
   _MyBookingViewDetails createState() => _MyBookingViewDetails();
@@ -18,67 +19,99 @@ class MyBookingViewDetails extends StatefulWidget {
 class _MyBookingViewDetails extends State<MyBookingViewDetails> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        constraints: new BoxConstraints.expand(
-          height: 200.0,
-        ),
-        padding: new EdgeInsets.only(left: 0.0, bottom: 8.0, right: 16.0),
-        decoration: new BoxDecoration(
-          color: Colors.blue,
-        ),
-        child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          textDirection: TextDirection.rtl,
-          children: [
-            Text(
-              '0.00',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 50.0,
-                  fontWeight: FontWeight.bold),
-            ),
-            Text(
-              'Current Balance',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26.0,
-                  fontWeight: FontWeight.bold),
-            ),
-            new Card(
-              child: new Column(
-                children: <Widget>[
-                  new Image.network(
-                      'https://i.ytimg.com/vi/fq4N0hgOWzU/maxresdefault.jpg'),
-                  new Padding(
-                      padding: new EdgeInsets.all(7.0),
-                      child: new Row(
-                        children: <Widget>[
-                          new Padding(
-                            padding: new EdgeInsets.all(7.0),
-                            child: new Icon(Icons.thumb_up),
-                          ),
-                          new Padding(
-                            padding: new EdgeInsets.all(7.0),
-                            child: new Text(
-                              'Like',
-                              style: new TextStyle(fontSize: 18.0),
-                            ),
-                          ),
-                          new Padding(
-                            padding: new EdgeInsets.all(7.0),
-                            child: new Icon(Icons.comment),
-                          ),
-                          new Padding(
-                            padding: new EdgeInsets.all(7.0),
-                            child: new Text('Comments',
-                                style: new TextStyle(fontSize: 18.0)),
-                          )
-                        ],
-                      ))
-                ],
+    // AppBar: o;
+    return Scaffold(
+      appBar: MyBookingAppBar(),
+      body: Container(
+          constraints: const BoxConstraints.expand(
+              // height: 100%,
               ),
-            )
-          ],
-        ));
+          padding: const EdgeInsets.all(8.0),
+          decoration: const BoxDecoration(
+            color: Color.fromRGBO(238, 29, 82, 1),
+          ),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              textDirection: TextDirection.rtl,
+              children: [
+                Card(
+                  color: Colors.grey,
+                  child: Column(
+                    children: [
+                      const Text(
+                        ' ',
+                        style: TextStyle(
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Text(
+                        'Test',
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        widget.title,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const Text(
+                        ' ',
+                        style: TextStyle(
+                          fontSize: 10.0,
+                        ),
+                      ),
+                      Image.network(
+                          'https://i.ytimg.com/vi/fq4N0hgOWzU/maxresdefault.jpg'),
+                      Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment
+                                .center, //Center Column contents vertically,
+                            crossAxisAlignment: CrossAxisAlignment
+                                .center, //Center Column contents horizontally,
+                            children: [
+                              MaterialButton(
+                                color: const Color.fromRGBO(238, 29, 82, 1),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                ),
+                                onPressed: () {
+                                  // showAlertDialog(context);
+                                },
+                                child: const Text(
+                                  "RENEW",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                              SizedBox(
+                                  width: 5,
+                                  height: 0,
+                                  child: Container(color: Colors.transparent)),
+                              MaterialButton(
+                                color: const Color.fromRGBO(84, 84, 84, 1),
+                                // color: Colors.blue,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                ),
+                                onPressed: () {},
+                                child: const Text(
+                                  "TERMINATE",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ],
+                          ))
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )),
+    );
   }
 }

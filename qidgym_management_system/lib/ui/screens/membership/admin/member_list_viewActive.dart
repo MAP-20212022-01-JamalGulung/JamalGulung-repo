@@ -5,22 +5,21 @@ import 'package:map_mvvm/view.dart';
 import 'package:qidgym_management_system/model/member.dart';
 import 'package:qidgym_management_system/ui/screens/membership/admin/member_list_viewmodel.dart';
 
-class MemberListView extends StatefulWidget {
-  const MemberListView({Key? key}) : super(key: key);
+class MemberListViewActive extends StatefulWidget {
+  const MemberListViewActive({Key? key}) : super(key: key);
 
   @override
-  State<MemberListView> createState() => _MemberListView();
+  State<MemberListViewActive> createState() => _MemberListViewActive();
   // State<ProfileBody> createState() => _ProfileBodyState();
 }
 
-class _MemberListView extends State<MemberListView> {
+class _MemberListViewActive extends State<MemberListViewActive> {
   @override
   Widget build(BuildContext context) {
     // final member = Provider.of<List<MemberModel>>(context);
-
     return View<MemberListViewModel>(
         builder: (_, viewmodel) => StreamBuilder<List<MemberModel>>(
-              stream: viewmodel.readMembership(),
+              stream: viewmodel.readActiveMembership(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return Text(snapshot.error.toString());
@@ -40,7 +39,7 @@ class _MemberListView extends State<MemberListView> {
                     ],
                   );
                 } else {
-                  return const Center(child: CircularProgressIndicator());
+                  return Center(child: CircularProgressIndicator());
                 }
               },
             ));

@@ -6,7 +6,7 @@ class MemberModel {
   String expDate;
   String subsDate;
   String name;
-  String period;
+  int period;
   String status;
 
   MemberModel({
@@ -15,7 +15,7 @@ class MemberModel {
     this.expDate = "",
     this.subsDate = "",
     this.name = "",
-    this.period = "",
+    this.period = 0,
     this.status = "",
   });
 
