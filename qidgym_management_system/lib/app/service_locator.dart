@@ -1,6 +1,8 @@
 import 'package:map_mvvm/service_locator.dart';
 import 'package:qidgym_management_system/services/booking/booking_service.dart';
 import 'package:qidgym_management_system/services/booking/booking_service_firebase.dart';
+import 'package:qidgym_management_system/services/chat/chat_services.dart';
+import 'package:qidgym_management_system/services/chat/chat_servicesFirebase.dart';
 import 'package:qidgym_management_system/services/operation_hour/operationHour_service.dart';
 import 'package:qidgym_management_system/services/operation_hour/operationHour_service_firebase.dart';
 import 'package:qidgym_management_system/services/profile/current_user.dart';
@@ -10,6 +12,8 @@ import 'package:qidgym_management_system/services/room/room_service_firebase.dar
 import 'package:qidgym_management_system/ui/screens/booking/customer/booking_viewmodel.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/bookingform/bookingform_viewmodel.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/mybooking/mybooking_viewmodel.dart';
+import 'package:qidgym_management_system/ui/screens/home/customer/home_view_chatBox.dart';
+import 'package:qidgym_management_system/ui/screens/home/customer/home_viewmodel.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/editschedule/editschedule_viewmodel.dart';
 import 'package:qidgym_management_system/ui/screens/home/moderator/home_viewmodel.dart';
 import 'package:qidgym_management_system/ui/screens/profile/profile_viewmodal.dart';
@@ -39,10 +43,13 @@ void initializeServiceLocator() => ServiceLocator.init((locator) async {
           () => MyBookingViewModel());
       locator.registerLazySingleton<BookingFormViewModel>(
           () => BookingFormViewModel());
+      locator.registerLazySingleton<ChatScreen>(() => const ChatScreen());
       locator.registerLazySingleton<EditScheduleViewModel>(
           () => EditScheduleViewModel());
       locator.registerLazySingleton<HomeModeratorViewModel>(
           () => HomeModeratorViewModel());
+      locator.registerLazySingleton<HomeCustomerViewModel>(
+          () => HomeCustomerViewModel());
       locator.registerLazySingleton<Profile>(() => const Profile());
       locator.registerFactory<MemberListViewModel>(() => MemberListViewModel());
       locator.registerLazySingleton<BookingModeratorService>(
@@ -51,4 +58,6 @@ void initializeServiceLocator() => ServiceLocator.init((locator) async {
           () => BookingModeratorViewModel());
       locator.registerLazySingleton<MembershipService>(
           () => MembershipServiceFirebase());
+      locator.registerLazySingleton<ChatServiceFirebase>(
+          () => ChatServiceFirebase());
     });

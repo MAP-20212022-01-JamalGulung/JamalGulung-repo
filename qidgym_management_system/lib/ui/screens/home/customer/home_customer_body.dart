@@ -53,7 +53,6 @@ class _HomeCustomerBodyState extends State<HomeCustomerBody> {
           SizedBox(
             height: 20,
           ),
-
           FutureBuilder<DocumentSnapshot<Object?>>(
               future: _operation.doc(currentDay).get(),
               // .where('day', isEqualTo: currentDay)
@@ -98,7 +97,6 @@ class _HomeCustomerBodyState extends State<HomeCustomerBody> {
 
                 // }).toList());
               }),
-
           SizedBox(
             height: 50,
           ),
@@ -114,175 +112,7 @@ class _HomeCustomerBodyState extends State<HomeCustomerBody> {
           SizedBox(
             height: 30,
           ),
-
           PromotionBox(context),
-
-          // ListView(
-          //   physics: NeverScrollableScrollPhysics(),
-          //   scrollDirection: Axis.vertical,
-          //   shrinkWrap: true,
-          //   children: [
-          //     GestureDetector(
-          //       onTap: () {
-          //         Navigator.push(
-          //           context,
-          //           MaterialPageRoute(
-          //               builder: (context) => const ViewPromo()),
-          //         );
-          //       },
-          //       child: Container(
-          //         width: double.infinity,
-          //         height: 150,
-          //         decoration: BoxDecoration(
-          //             image: DecorationImage(
-          //                 image: AssetImage("assets/blue.jpg"),
-          //                 fit: BoxFit.cover),
-          //             borderRadius: BorderRadius.circular(10)),
-          //         child: Stack(children: [
-          //           Container(
-          //             decoration: BoxDecoration(
-          //                 color: Color.fromRGBO(158, 27, 117, 0.7),
-          //                 borderRadius: BorderRadius.circular(10)),
-          //           ),
-          //           Column(
-          //             mainAxisAlignment: MainAxisAlignment.end,
-          //             children: [
-          //               Padding(
-          //                 padding: EdgeInsets.all(12.0),
-          //                 child: Text(
-          //                   "Summer Body Challenge",
-          //                   style: TextStyle(
-          //                       color: Colors.white, fontSize: 20.0),
-          //                 ),
-          //               )
-          //             ],
-          //           )
-          //         ]),
-          //       ),
-          //     ),
-
-          //   ],
-          // )
-
-          // ListView(
-          //   scrollDirection: Axis.horizontal,
-          //   children: <Widget>[],
-          // )
-
-          //   Row(
-          //     mainAxisSize: MainAxisSize.max,
-          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //     children: [
-          //     GestureDetector(
-          //         onTap: () {Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => const ViewPromo()),
-          // );
-          //         },
-          //         child: Container(
-          //           // decoration: BoxDecoration(color: Color.fromRGBO(158, 27, 117, 0.5),borderRadius: BorderRadius.circular(10)),
-          //           decoration: BoxDecoration(
-          //               image: DecorationImage(
-          //                   image: AssetImage("assets/pink.jpg"),
-          //                   fit: BoxFit.cover),
-          //               borderRadius: BorderRadius.circular(10)),
-          //           height: 280,
-          //           width: 160,
-          //           child: Stack(children: [
-          //             Container(
-          //               decoration: BoxDecoration(
-          //                   color: Color.fromRGBO(158, 27, 117, 0.6),
-          //                   borderRadius: BorderRadius.circular(10)),
-          //             ),
-          //             Column(
-          //               mainAxisAlignment: MainAxisAlignment.end,
-          //               children: [
-          //                 Padding(
-          //                   padding: const EdgeInsets.all(8.0),
-          //                   child: Text(
-          //                     "Summer Body Challenge",
-          //                     style: TextStyle(
-          //                         color: Colors.white, fontSize: 18),
-          //                   ),
-          //                 )
-          //               ],
-          //             )
-          //           ]),
-          //         ),
-          //       ),
-          //       Column(
-          //         mainAxisSize: MainAxisSize.max,
-          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //         children: [
-          //           Container(
-          //             // decoration: BoxDecoration(color: Color.fromRGBO(27, 117, 158, 0.5),borderRadius: BorderRadius.circular(10)),
-          //             decoration: BoxDecoration(
-          //                 image: DecorationImage(
-          //                     image: AssetImage("assets/blue.jpg"),
-          //                     fit: BoxFit.cover),
-          //                 borderRadius: BorderRadius.circular(10)),
-          //             height: 134,
-          //             width: 160,
-
-          //             child: Stack(children: [
-          //               Container(
-          //                 decoration: BoxDecoration(
-          //                     color: Color.fromRGBO(27, 117, 158, 0.6),
-          //                     borderRadius: BorderRadius.circular(10)),
-          //               ),
-          //               Column(
-          //                 mainAxisAlignment: MainAxisAlignment.end,
-          //                 children: [
-          //                   Padding(
-          //                     padding: const EdgeInsets.all(8.0),
-          //                     child: Text(
-          //                       "Merry May",
-          //                       style: TextStyle(
-          //                           color: Colors.white, fontSize: 18),
-          //                     ),
-          //                   )
-          //                 ],
-          //               )
-          //             ]),
-          //           ),
-          //           SizedBox(
-          //             height: 12,
-          //           ),
-          //           Container(
-          //             // decoration: BoxDecoration(color: Color.fromRGBO(117, 158, 27, 0.5),borderRadius: BorderRadius.circular(10)),
-          //             decoration: BoxDecoration(
-          //                 image: DecorationImage(
-          //                     image: AssetImage("assets/yellow.jpg"),
-          //                     fit: BoxFit.cover),
-          //                 borderRadius: BorderRadius.circular(10)),
-          //             height: 134,
-          //             width: 160,
-
-          //             child: Stack(children: [
-          //               Container(
-          //                 decoration: BoxDecoration(
-          //                     color: Color.fromRGBO(117, 158, 27, 0.6),
-          //                     borderRadius: BorderRadius.circular(10)),
-          //               ),
-          //               Column(
-          //                 mainAxisAlignment: MainAxisAlignment.end,
-          //                 children: [
-          //                   Padding(
-          //                     padding: const EdgeInsets.all(8.0),
-          //                     child: Text(
-          //                       "Zumba Raya",
-          //                       style: TextStyle(
-          //                           color: Colors.white, fontSize: 18),
-          //                     ),
-          //                   )
-          //                 ],
-          //               )
-          //             ]),
-          //           ),
-          //         ],
-          //       )
-          //     ],
-          //   ),
         ]),
       ),
     );

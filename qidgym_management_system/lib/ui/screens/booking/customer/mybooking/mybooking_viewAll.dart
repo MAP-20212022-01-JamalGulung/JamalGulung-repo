@@ -115,7 +115,7 @@ class _MyBookingViewAll extends State<MyBookingViewAll> {
                                     onTap: () {
                                       setState(() {
                                         // There was a logic error here in your code, so changed it to work correctly
-                                        bID = book.uid;
+                                        bID = book.bookingID;
                                       });
                                       Navigator.push(
                                           context,

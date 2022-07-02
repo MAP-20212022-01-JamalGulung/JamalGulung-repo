@@ -26,9 +26,7 @@ class _MemberListView extends State<MemberListView> {
                   return Text(snapshot.error.toString());
                 }
 
-                // if (snapshot.connectionState == ConnectionState.waiting) {
-                //   return Text("Loading");
-                // }
+                
                 if (snapshot.hasData) {
                   final member = snapshot.data!;
                   return Column(

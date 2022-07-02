@@ -23,6 +23,10 @@ class MyBookingViewModel extends Viewmodel {
     return _dbBooking.readAllBooking();
   }
 
+  Stream<List<BookingModel>> readThisBooking({@required bookingID}) {
+    return _dbBooking.readThisBooking(bookingID);
+  }
+
   Stream<List<BookingModel>> readPendingBooking() {
     return _dbBooking.readPendingBooking();
   }

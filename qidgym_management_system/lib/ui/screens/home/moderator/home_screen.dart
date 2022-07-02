@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
+import 'package:qidgym_management_system/ui/screens/home/customer/home_view_chatBox.dart';
 import 'package:qidgym_management_system/ui/screens/promotion/customer/viewpromotion_screen.dart';
 import 'home.dart';
 import 'package:qidgym_management_system/services/world_time.dart';
@@ -20,10 +21,20 @@ class _HomeModerator extends State<HomeModerator> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          backgroundColor: Color.fromRGBO(24, 24, 24, 1),
-          appBar: HomeModeratorAppBar(),
-          body: HomeModeratorBody()),
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Color.fromRGBO(24, 24, 24, 1),
+        appBar: HomeModeratorAppBar(),
+        body: HomeModeratorBody(),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const ChatScreen()));
+          },
+          label: const Text('Inquiries'),
+          icon: const Icon(Icons.headset_mic_rounded),
+          backgroundColor: Colors.pink,
+        ),
+      ),
     );
   }
 }

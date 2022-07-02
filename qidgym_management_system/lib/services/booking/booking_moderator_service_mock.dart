@@ -36,6 +36,16 @@ class BookingModeratorServiceMock extends BookingModeratorService {
           .toList());
 
   @override
+  Stream<List<BookingModel>> readThisBooking(String bookingID) =>
+      FirebaseFirestore.instance
+          .collection('Booking')
+          .where('bookingID', isEqualTo: bookingID)
+          .snapshots()
+          .map((snapshot) => snapshot.docs
+              .map((doc) => BookingModel.fromJson(doc.data()))
+              .toList());
+
+  @override
   Future acceptBooking(String bookingID) async {
     try {
       final docOrder =
