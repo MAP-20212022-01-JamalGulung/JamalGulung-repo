@@ -5,6 +5,8 @@ import 'package:qidgym_management_system/model/booking.dart';
 import 'package:qidgym_management_system/model/bookingDetails.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/mybooking/mybooking_viewDetails.dart';
 // import 'package:qidgym_management_system/ui/screens/booking/customer/booking_viewmodel.dart';
+import 'package:qidgym_management_system/ui/screens/booking/customer/booking_pdf.dart';
+import 'package:qidgym_management_system/ui/screens/booking/customer/booking_viewmodel.dart';
 
 import 'mybooking_viewmodel.dart';
 // import 'package:google_fonts/google_fonts.dart';
@@ -45,6 +47,31 @@ class _MyBookingViewAll extends State<MyBookingViewAll> {
                 } else {
                   return Center(child: CircularProgressIndicator());
                 }
+                final _book = snapshot.data!;
+                return Column(
+                  children: [
+                    ListView(
+                      shrinkWrap: true,
+                      children: _book.map(buildBookList).toList(),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => bookingPdf(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Click here",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ],
+                );
               },
             ));
   }
