@@ -20,15 +20,15 @@ class BookingModeratorScreenState extends State<BookingModeratorScreen> {
       child: Scaffold(
         appBar: const BookingModeratorAppBar(),
         body: BookingModeratorBody(),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const BookingBody()));
-          },
-          label: const Text('Add New Booking'),
-          icon: const Icon(Icons.add),
-          backgroundColor: Colors.pink,
-        ),
+        // floatingActionButton: FloatingActionButton.extended(
+        //   onPressed: () {
+        //     Navigator.push(context,
+        //         MaterialPageRoute(builder: (context) => const BookingBody()));
+        //   },
+        //   label: const Text('Add New Booking'),
+        //   icon: const Icon(Icons.add),
+        //   backgroundColor: Colors.pink,
+        // ),
       ),
     );
   }

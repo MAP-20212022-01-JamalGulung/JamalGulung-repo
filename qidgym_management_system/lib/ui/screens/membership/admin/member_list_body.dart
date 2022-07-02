@@ -55,14 +55,14 @@ class _MemberListBody extends State<MemberListBody> {
             MemberListViewExpired(),
           ],
         ),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            // Add your onPressed code here!
-          },
-          label: const Text('Add New Member'),
-          icon: const Icon(Icons.add, size: 30),
-          backgroundColor: Colors.pink,
-        ),
+        // floatingActionButton: FloatingActionButton.extended(
+        //   onPressed: () {
+        //     // Add your onPressed code here!
+        //   },
+        //   label: const Text('Add New Member'),
+        //   icon: const Icon(Icons.add, size: 30),
+        //   backgroundColor: Colors.pink,
+        // ),
         backgroundColor: Color.fromRGBO(24, 24, 24, 1),
       ),
     );
