@@ -7,12 +7,12 @@ import 'package:pdf/widgets.dart';
 class PdfApi {
   static Future<File> generateCenteredText(String text) async {
     final pdf = Document();
-    // final font = await rootBundle.load("lib/assets/fonts/OpenSans-Regular.ttf");
-    // final ttf = Font.ttf(font);
+    final font = await rootBundle.load("assets/fonts/OpenSans-Regular.ttf");
+    final ttf = Font.ttf(font);
     // final font = await GoogleFonts.lato();
     pdf.addPage(Page(
       build: (context) => Center(
-        child: Text(text, style: TextStyle(fontSize: 48)),
+        child: Text(text, style: TextStyle(font: ttf, fontSize: 48)),
       ),
     ));
 

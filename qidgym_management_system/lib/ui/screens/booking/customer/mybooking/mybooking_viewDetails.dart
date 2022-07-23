@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:map_mvvm/view.dart';
 import 'package:qidgym_management_system/model/booking.dart';
 import 'package:qidgym_management_system/model/bookingDetails.dart';
+import 'package:qidgym_management_system/ui/screens/booking/customer/booking_pdf.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/booking_viewmodel.dart';
 import 'package:qidgym_management_system/ui/screens/booking/customer/mybooking/mybooking_app_bar.dart';
 
@@ -21,6 +22,17 @@ class _MyBookingViewDetails extends State<MyBookingViewDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => bookingPdf(),
+            ),
+          );
+        },
+        child: Icon(Icons.picture_as_pdf),
+        backgroundColor: Color.fromRGBO(238, 29, 82, 1),
+      ),
       appBar: MyBookingAppBar(),
       body: View<MyBookingViewModel>(
           builder: (_, viewmodel) => StreamBuilder<List<BookingModel>>(
